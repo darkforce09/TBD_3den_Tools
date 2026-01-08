@@ -39,4 +39,5 @@ A persistent library for saving compositions between missions.
 ## Credits
 
 *   **Author**: Darkforce
+*   **Coding Help**: Antigravity
 *   **License**: APL-SA
