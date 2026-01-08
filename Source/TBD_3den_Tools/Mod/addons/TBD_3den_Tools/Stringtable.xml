@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project name="3denCSO">
+    <Package name="Core">
+        <Key ID="STR_CSO_FoundSelected">
+            <Original>CSO: Found and Selected %1 objects marked for optimization.</Original>
+            <German>CSO: %1 für Optimierung markierte Objekte gefunden und ausgewählt.</German>
+            <French>CSO: %1 objets marqués pour optimisation trouvés et sélectionnés.</French>
+            <Spanish>CSO: %1 objetos marcados para optimización encontrados y seleccionados.</Spanish>
+            <Italian>CSO: Trovati e selezionati %1 oggetti contrassegnati per l'ottimizzazione.</Italian>
+            <Polish>CSO: Znaleziono i zaznaczono %1 obiektów oznaczonych do optymalizacji.</Polish>
+            <Russian>CSO: Найдено и выбрано %1 объектов, помеченных для оптимизации.</Russian>
+            <Czech>CSO: Nalezeno a vybráno %1 objektů označených pro optimalizaci.</Czech>
+            <Portuguese>CSO: Encontrados e selecionados %1 objetos marcados para otimização.</Portuguese>
+            <Turkish>CSO: Optimizasyon için işaretlenmiş %1 nesne bulundu ve seçildi.</Turkish>
+            <Chinese>CSO: 已找到并选中 %1 个标记为优化的对象。</Chinese>
+            <ChineseTraditional>CSO: 已找到並選中 %1 個標記為優化的對象。</ChineseTraditional>
+            <Japanese>CSO: 最適化対象としてマークされた %1 個のオブジェクトが見つかり選択されました。</Japanese>
+            <Korean>CSO: 최적화를 위해 표시된 %1 개의 개체를 찾아 선택했습니다.</Korean>
+            <Dutch>CSO: %1 objecten gevonden en geselecteerd voor optimalisatie.</Dutch>
+            <Swedish>CSO: Hittade och valde %1 objekt markerade för optimering.</Swedish>
+            <Ukrainian>CSO: Знайдено та вибрано %1 об'єктів, позначених для оптимізації.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Warn_NoObjects">
+            <Original>CSO Warning: No objects found with 'Create as simple object?' checked.</Original>
+            <German>CSO Warnung: Keine Objekte mit 'Als einfaches Objekt erstellen?' gefunden.</German>
+            <French>Avertissement CSO: Aucun objet trouvé avec 'Créer comme objet simple?' coché.</French>
+            <Spanish>Advertencia CSO: No se encontraron objetos con '¿Crear como objeto simple?' marcado.</Spanish>
+            <Italian>Attenzione CSO: Nessun oggetto trovato con 'Crea come oggetto semplice?' selezionato.</Italian>
+            <Polish>Ostrzeżenie CSO: Nie znaleziono obiektów z zaznaczonym 'Utwórz jako prosty obiekt?'.</Polish>
+            <Russian>Предупреждение CSO: Не найдено объектов с пометкой 'Создать как простой объект?'.</Russian>
+            <Czech>Varování CSO: Nebyly nalezeny žádné objekty s označením 'Vytvořit jako jednoduchý objekt?'.</Czech>
+            <Portuguese>Aviso CSO: Nenhum objeto encontrado com 'Criar como objeto simples?' marcado.</Portuguese>
+            <Turkish>CSO Uyarısı: 'Basit nesne olarak oluştur?' işaretli nesne bulunamadı.</Turkish>
+            <Chinese>CSO 警告：未找到选中“创建为简单对象？”的对象。</Chinese>
+            <ChineseTraditional>CSO 警告：未找到選中“創建為簡單對象？”的對象。</ChineseTraditional>
+            <Japanese>CSO 警告: 「シンプルオブジェクトとして作成?」がチェックされているオブジェクトが見つかりません。</Japanese>
+            <Korean>CSO 경고: '단순 개체로 생성?'이 선택된 개체가 없습니다.</Korean>
+            <Dutch>CSO Waarschuwing: Geen objecten gevonden met 'Maak als eenvoudig object?' aangevinkt.</Dutch>
+            <Swedish>CSO Varning: Inga objekt hittades med 'Skapa som enkelt objekt?' markerat.</Swedish>
+            <Ukrainian>Попередження CSO: Не знайдено об'єктів з позначкою 'Створити як простий об'єкт?'.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_SelectLogic">
+            <Original>CSO ERROR: Select 'CSO_Manager' Logic first.</Original>
+            <German>CSO FEHLER: Zuerst 'CSO_Manager' Logik auswählen.</German>
+            <French>ERREUR CSO: Sélectionnez d'abord la logique 'CSO_Manager'.</French>
+            <Spanish>ERROR CSO: Seleccione primero la lógica 'CSO_Manager'.</Spanish>
+            <Italian>ERRORE CSO: Seleziona prima la logica 'CSO_Manager'.</Italian>
+            <Polish>BŁĄD CSO: Najpierw wybierz logikę 'CSO_Manager'.</Polish>
+            <Russian>ОШИБКА CSO: Сначала выберите логику 'CSO_Manager'.</Russian>
+            <Czech>CHYBA CSO: Nejprve vyberte logiku 'CSO_Manager'.</Czech>
+            <Portuguese>ERRO CSO: Selecione primeiro a lógica 'CSO_Manager'.</Portuguese>
+            <Turkish>CSO HATASI: Önce 'CSO_Manager' Mantığını seçin.</Turkish>
+            <Chinese>CSO 错误：请先选择 'CSO_Manager' 逻辑。</Chinese>
+            <ChineseTraditional>CSO 錯誤：請先選擇 'CSO_Manager' 邏輯。</ChineseTraditional>
+            <Japanese>CSO エラー: 最初に 'CSO_Manager' ロジックを選択してください。</Japanese>
+            <Korean>CSO 오류: 먼저 'CSO_Manager' 로직을 선택하십시오.</Korean>
+            <Dutch>CSO FOUT: Selecteer eerst 'CSO_Manager' logica.</Dutch>
+            <Swedish>CSO FEL: Välj 'CSO_Manager'-logik först.</Swedish>
+            <Ukrainian>ПОМИЛКА CSO: Спочатку виберіть логіку 'CSO_Manager'.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_CorruptData">
+            <Original>CSO ERROR: Corrupt Logic Data.</Original>
+            <German>CSO FEHLER: Beschädigte Logikdaten.</German>
+            <French>ERREUR CSO: Données logiques corrompues.</French>
+            <Spanish>ERROR CSO: Datos lógicos corruptos.</Spanish>
+            <Italian>ERRORE CSO: Dati logici corrotti.</Italian>
+            <Polish>BŁĄD CSO: Uszkodzone dane logiki.</Polish>
+            <Russian>ОШИБКА CSO: Поврежденные данные логики.</Russian>
+            <Czech>CHYBA CSO: Poškozená data logiky.</Czech>
+            <Portuguese>ERRO CSO: Dados lógicos corrompidos.</Portuguese>
+            <Turkish>CSO HATASI: Bozuk Mantık Verisi.</Turkish>
+            <Chinese>CSO 错误：逻辑数据损坏。</Chinese>
+            <ChineseTraditional>CSO 錯誤：邏輯數據損壞。</ChineseTraditional>
+            <Japanese>CSO エラー: ロジックデータが破損しています。</Japanese>
+            <Korean>CSO 오류: 손상된 로직 데이터.</Korean>
+            <Dutch>CSO FOUT: Beschadigde logische gegevens.</Dutch>
+            <Swedish>CSO FEL: Korrupt logikdata.</Swedish>
+            <Ukrainian>ПОМИЛКА CSO: Пошкоджені дані логіки.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Success_Deleted">
+            <Original>CSO Success: Deleted %1 objects marked for optimization.</Original>
+            <German>CSO Erfolg: %1 für Optimierung markierte Objekte gelöscht.</German>
+            <French>Succès CSO: %1 objets marqués pour optimisation supprimés.</French>
+            <Spanish>Éxito CSO: Eliminados %1 objetos marcados para optimización.</Spanish>
+            <Italian>Successo CSO: Eliminati %1 oggetti contrassegnati per l'ottimizzazione.</Italian>
+            <Polish>Sukces CSO: Usunięto %1 obiektów oznaczonych do optymalizacji.</Polish>
+            <Russian>Успех CSO: Удалено %1 объектов, помеченных для оптимизации.</Russian>
+            <Czech>Úspěch CSO: Smazáno %1 objektů označených pro optimalizaci.</Czech>
+            <Portuguese>Sucesso CSO: Excluídos %1 objetos marcados para otimização.</Portuguese>
+            <Turkish>CSO Başarısı: Optimizasyon için işaretlenmiş %1 nesne silindi.</Turkish>
+            <Chinese>CSO 成功：删除了 %1 个标记为优化的对象。</Chinese>
+            <ChineseTraditional>CSO 成功：刪除了 %1 個標記為優化的對象。</ChineseTraditional>
+            <Japanese>CSO 成功: 最適化対象としてマークされた %1 個のオブジェクトを削除しました。</Japanese>
+            <Korean>CSO 성공: 최적화를 위해 표시된 %1 개의 개체를 삭제했습니다.</Korean>
+            <Dutch>CSO Succes: %1 objecten verwijderd die gemarkeerd waren voor optimalisatie.</Dutch>
+            <Swedish>CSO: Raderade %1 objekt markerade för optimering.</Swedish>
+            <Ukrainian>Успіх CSO: Видалено %1 об'єктів, позначених для оптимізації.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_EnterName">
+            <Original>CSO ERROR: Enter a name.</Original>
+            <German>CSO FEHLER: Bitte Namen eingeben.</German>
+            <French>ERREUR CSO: Entrez un nom.</French>
+            <Spanish>ERROR CSO: Ingrese un nombre.</Spanish>
+            <Italian>ERRORE CSO: Inserisci un nome.</Italian>
+            <Polish>BŁĄD CSO: Wprowadź nazwę.</Polish>
+            <Russian>ОШИБКА CSO: Введите имя.</Russian>
+            <Czech>CHYBA CSO: Zadejte název.</Czech>
+            <Portuguese>ERRO CSO: Insira um nome.</Portuguese>
+            <Turkish>CSO HATASI: Bir isim girin.</Turkish>
+            <Chinese>CSO 错误：请输入名称。</Chinese>
+            <ChineseTraditional>CSO 錯誤：請輸入名稱。</ChineseTraditional>
+            <Japanese>CSO エラー: 名前を入力してください。</Japanese>
+            <Korean>CSO 오류: 이름을 입력하십시오.</Korean>
+            <Dutch>CSO FOUT: Voer een naam in.</Dutch>
+            <Swedish>CSO FEL: Ange ett namn.</Swedish>
+            <Ukrainian>ПОМИЛКА CSO: Введіть ім'я.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_NoObjectsFound">
+            <Original>CSO ERROR: No objects found.</Original>
+            <German>CSO FEHLER: Keine Objekte gefunden.</German>
+            <French>ERREUR CSO: Aucun objet trouvé.</French>
+            <Spanish>ERROR CSO: No se encontraron objetos.</Spanish>
+            <Italian>ERRORE CSO: Nessun oggetto trovato.</Italian>
+            <Polish>BŁĄD CSO: Nie znaleziono obiektów.</Polish>
+            <Russian>ОШИБКА CSO: Объекты не найдены.</Russian>
+            <Czech>CHYBA CSO: Nebyly nalezeny žádné objekty.</Czech>
+            <Portuguese>ERRO CSO: Nenhum objeto encontrado.</Portuguese>
+            <Turkish>CSO HATASI: Nesne bulunamadı.</Turkish>
+            <Chinese>CSO 错误：未找到对象。</Chinese>
+            <ChineseTraditional>CSO 錯誤：未找到對象。</ChineseTraditional>
+            <Japanese>CSO エラー: オブジェクトが見つかりません。</Japanese>
+            <Korean>CSO 오류: 개체를 찾을 수 없습니다.</Korean>
+            <Dutch>CSO FOUT: Geen objecten gevonden.</Dutch>
+            <Swedish>CSO FEL: Inga objekt hittades.</Swedish>
+            <Ukrainian>ПОМИЛКА CSO: Об'єкти не знайдено.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Success_CreatedLogic">
+            <Original>CSO Success: Created Logic '%1'.</Original>
+            <German>CSO Erfolg: Logik '%1' erstellt.</German>
+            <French>Succès CSO: Logique '%1' créée.</French>
+            <Spanish>Éxito CSO: Lógica '%1' creada.</Spanish>
+            <Italian>Successo CSO: Logica '%1' creata.</Italian>
+            <Polish>Sukces CSO: Utworzono logikę '%1'.</Polish>
+            <Russian>Успех CSO: Создана логика '%1'.</Russian>
+            <Czech>Úspěch CSO: Vytvořena logika '%1'.</Czech>
+            <Portuguese>Sucesso CSO: Lógica '%1' criada.</Portuguese>
+            <Turkish>CSO Başarısı: '%1' Mantığı oluşturuldu.</Turkish>
+            <Chinese>CSO 成功：已创建逻辑 '%1'。</Chinese>
+            <ChineseTraditional>CSO 成功：已創建邏輯 '%1'。</ChineseTraditional>
+            <Japanese>CSO 成功: ロジック '%1' を作成しました。</Japanese>
+            <Korean>CSO 성공: 로직 '%1'이 생성되었습니다.</Korean>
+            <Dutch>CSO Succes: Logica '%1' gemaakt.</Dutch>
+            <Swedish>CSO: Skapade logik '%1'.</Swedish>
+            <Ukrainian>Успіх CSO: Створено логіку '%1'.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_CopiedToClipboard">
+            <Original>CSO: Copied %1 objects (%2).</Original>
+            <German>CSO: %1 Objekte kopiert (%2).</German>
+            <French>CSO: %1 objets copiés (%2).</French>
+            <Spanish>CSO: Copiados %1 objetos (%2).</Spanish>
+            <Italian>CSO: Copiati %1 oggetti (%2).</Italian>
+            <Polish>CSO: Skopiowano %1 obiektów (%2).</Polish>
+            <Russian>CSO: Скопировано %1 объектов (%2).</Russian>
+            <Czech>CSO: Zkopírováno %1 objektů (%2).</Czech>
+            <Portuguese>CSO: Copiados %1 objetos (%2).</Portuguese>
+            <Turkish>CSO: %1 nesne kopyalandı (%2).</Turkish>
+            <Chinese>CSO: 已复制 %1 个对象 (%2)。</Chinese>
+            <ChineseTraditional>CSO: 已復制 %1 個對象 (%2)。</ChineseTraditional>
+            <Japanese>CSO: %1 個のオブジェクトをコピーしました (%2)。</Japanese>
+            <Korean>CSO: %1 개의 개체가 복사되었습니다 (%2).</Korean>
+            <Dutch>CSO: %1 objecten gekopieerd (%2).</Dutch>
+            <Swedish>CSO: Kopierade %1 objekt (%2).</Swedish>
+            <Ukrainian>CSO: Скопійовано %1 об'єктів (%2).</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Warn_CreateClass">
+            <Original>CSO Warning: Could not create class '%1'.</Original>
+            <German>CSO Warnung: Konnte Klasse '%1' nicht erstellen.</German>
+            <French>Avertissement CSO: Impossible de créer la classe '%1'.</French>
+            <Spanish>Advertencia CSO: No se pudo crear la clase '%1'.</Spanish>
+            <Italian>Attenzione CSO: Impossibile creare la classe '%1'.</Italian>
+            <Polish>Ostrzeżenie CSO: Nie można utworzyć klasy '%1'.</Polish>
+            <Russian>Предупреждение CSO: Не удалось создать класс '%1'.</Russian>
+            <Czech>Varování CSO: Nelze vytvořit třídu '%1'.</Czech>
+            <Portuguese>Aviso CSO: Não foi possível criar a classe '%1'.</Portuguese>
+            <Turkish>CSO Uyarısı: '%1' sınıfı oluşturulamadı.</Turkish>
+            <Chinese>CSO 警告：无法创建类 '%1'。</Chinese>
+            <ChineseTraditional>CSO 警告：無法創建類 '%1'。</ChineseTraditional>
+            <Japanese>CSO 警告: クラス '%1' を作成できませんでした。</Japanese>
+            <Korean>CSO 경고: 클래스 '%1'을 생성할 수 없습니다.</Korean>
+            <Dutch>CSO Waarschuwing: Kan klasse '%1' niet maken.</Dutch>
+            <Swedish>CSO Varning: Kunde inte skapa klass '%1'.</Swedish>
+            <Ukrainian>Попередження CSO: Не вдалося створити клас '%1'.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Success_Restored">
+            <Original>CSO Success: Restored %1 objects into layer '%2'.</Original>
+            <German>CSO Erfolg: %1 Objekte in Ebene '%2' wiederhergestellt.</German>
+            <French>Succès CSO: %1 objets restaurés dans le calque '%2'.</French>
+            <Spanish>Éxito CSO: Restaurados %1 objetos en la capa '%2'.</Spanish>
+            <Italian>Successo CSO: Ripristinati %1 oggetti nel livello '%2'.</Italian>
+            <Polish>Sukces CSO: Przywrócono %1 obiektów w warstwie '%2'.</Polish>
+            <Russian>Успех CSO: Восстановлено %1 объектов в слой '%2'.</Russian>
+            <Czech>Úspěch CSO: Obnoveno %1 objektů do vrstvy '%2'.</Czech>
+            <Portuguese>Sucesso CSO: Restaurados %1 objetos na camada '%2'.</Portuguese>
+            <Turkish>CSO Başarısı: %1 nesne '%2' katmanına geri yüklendi.</Turkish>
+            <Chinese>CSO 成功：已将 %1 个对象恢复到图层 '%2'。</Chinese>
+            <ChineseTraditional>CSO 成功：已將 %1 個對象恢復到圖層 '%2'。</ChineseTraditional>
+            <Japanese>CSO 成功: レイヤー '%2' に %1 個のオブジェクトを復元しました。</Japanese>
+            <Korean>CSO 성공: 레이어 '%2'에 %1 개의 개체를 복원했습니다.</Korean>
+            <Dutch>CSO Succes: %1 objecten hersteld in laag '%2'.</Dutch>
+            <Swedish>CSO: Återställde %1 objekt till lager '%2'.</Swedish>
+            <Ukrainian>Успіх CSO: Відновлено %1 об'єктів у шар '%2'.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_ImportedLogic">
+            <Original>CSO: Imported data from Logic entity.</Original>
+            <German>CSO: Daten aus Logik-Einheit importiert.</German>
+            <French>CSO: Données importées de l'entité logique.</French>
+            <Spanish>CSO: Datos importados de la entidad lógica.</Spanish>
+            <Italian>CSO: Dati importati dall'entità logica.</Italian>
+            <Polish>CSO: Zaimportowano dane z encji logiki.</Polish>
+            <Russian>CSO: Импортированы данные из логической сущности.</Russian>
+            <Czech>CSO: Data importována z logické entity.</Czech>
+            <Portuguese>CSO: Dados importados da entidade lógica.</Portuguese>
+            <Turkish>CSO: Mantık varlığından veri alındı.</Turkish>
+            <Chinese>CSO: 已从逻辑实体导入数据。</Chinese>
+            <ChineseTraditional>CSO: 已從邏輯實體導入數據。</ChineseTraditional>
+            <Japanese>CSO: ロジックエンティティからデータをインポートしました。</Japanese>
+            <Korean>CSO: 로직 개체에서 데이터를 가져왔습니다.</Korean>
+            <Dutch>CSO: Gegevens geïmporteerd uit logische entiteit.</Dutch>
+            <Swedish>CSO: Importerade data från logikentitet.</Swedish>
+            <Ukrainian>CSO: Імпортовано дані з логічної сутності.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_InvalidSelection">
+            <Original>CSO ERROR: No valid objects or compatible logic selected.</Original>
+            <German>CSO FEHLER: Keine gültigen Objekte oder kompatible Logik ausgewählt.</German>
+            <French>ERREUR CSO: Aucun objet valide ou logique compatible sélectionné.</French>
+            <Spanish>ERROR CSO: No se seleccionaron objetos válidos ni lógica compatible.</Spanish>
+            <Italian>ERRORE CSO: Nessun oggetto valido o logica compatibile selezionata.</Italian>
+            <Polish>BŁĄD CSO: Nie wybrano prawidłowych obiektów ani kompatybilnej logiki.</Polish>
+            <Russian>ОШИБКА CSO: Не выбраны допустимые объекты или совместимая логика.</Russian>
+            <Czech>CHYBA CSO: Nebyly vybrány žádné platné objekty ani kompatibilní logika.</Czech>
+            <Portuguese>ERRO CSO: Nenhum objeto válido ou lógica compatível selecionada.</Portuguese>
+            <Turkish>CSO HATASI: Geçerli nesne veya uyumlu mantık seçilmedi.</Turkish>
+            <Chinese>CSO 错误：未选择有效对象或兼容逻辑。</Chinese>
+            <ChineseTraditional>CSO 錯誤：未選擇有效對象或兼容邏輯。</ChineseTraditional>
+            <Japanese>CSO エラー: 有効なオブジェクトまたは互換性のあるロジックが選択されていません。</Japanese>
+            <Korean>CSO 오류: 유효한 개체 또는 호환되는 로직이 선택되지 않았습니다.</Korean>
+            <Dutch>CSO FOUT: Geen geldige objecten of compatibele logica geselecteerd.</Dutch>
+            <Swedish>CSO FEL: Inga giltiga objekt eller kompatibel logik vald.</Swedish>
+            <Ukrainian>ПОМИЛКА CSO: Не вибрано дійсних об'єктів або сумісної логіки.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_GroupSaved">
+            <Original>CSO: Group '%1' saved.</Original>
+            <German>CSO: Gruppe '%1' gespeichert.</German>
+            <French>CSO: Groupe '%1' enregistré.</French>
+            <Spanish>CSO: Grupo '%1' guardado.</Spanish>
+            <Italian>CSO: Gruppo '%1' salvato.</Italian>
+            <Polish>CSO: Grupa '%1' zapisana.</Polish>
+            <Russian>CSO: Группа '%1' сохранена.</Russian>
+            <Czech>CSO: Skupina '%1' uložena.</Czech>
+            <Portuguese>CSO: Grupo '%1' salvo.</Portuguese>
+            <Turkish>CSO: Grup '%1' kaydedildi.</Turkish>
+            <Chinese>CSO: 组 '%1' 已保存。</Chinese>
+            <ChineseTraditional>CSO: 組 '%1' 已保存。</ChineseTraditional>
+            <Japanese>CSO: グループ '%1' を保存しました。</Japanese>
+            <Korean>CSO: 그룹 '%1'이 저장되었습니다.</Korean>
+            <Dutch>CSO: Groep '%1' opgeslagen.</Dutch>
+            <Swedish>CSO: Gruppen '%1' sparad.</Swedish>
+            <Ukrainian>CSO: Група '%1' збережена.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_NoItemSel">
+            <Original>CSO: No item selected.</Original>
+            <German>CSO: Kein Element ausgewählt.</German>
+            <French>CSO: Aucun élément sélectionné.</French>
+            <Spanish>CSO: Ningún elemento seleccionado.</Spanish>
+            <Italian>CSO: Nessun elemento selezionato.</Italian>
+            <Polish>CSO: Nie wybrano elementu.</Polish>
+            <Russian>CSO: Элемент не выбран.</Russian>
+            <Czech>CSO: Nebyla vybrána žádná položka.</Czech>
+            <Portuguese>CSO: Nenhum item selecionado.</Portuguese>
+            <Turkish>CSO: Öğe seçilmedi.</Turkish>
+            <Chinese>CSO: 未选择任何项目。</Chinese>
+            <ChineseTraditional>CSO: 未選擇任何項目。</ChineseTraditional>
+            <Japanese>CSO: アイテムが選択されていません。</Japanese>
+            <Korean>CSO: 항목이 선택되지 않았습니다.</Korean>
+            <Dutch>CSO: Geen item geselecteerd.</Dutch>
+            <Swedish>CSO: Inget objekt valt.</Swedish>
+            <Ukrainian>CSO: Елемент не вибрано.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_SelFolder">
+            <Original>CSO: Selected item is a folder. Expand it and select an item.</Original>
+            <German>CSO: Ausgewähltes Element ist ein Ordner. Bitte öffnen und ein Item auswählen.</German>
+            <French>CSO: L'élément sélectionné est un dossier. Développez-le et sélectionnez un élément.</French>
+            <Spanish>CSO: El elemento seleccionado es una carpeta. Expándala y seleccione un elemento.</Spanish>
+            <Italian>CSO: L'elemento selezionato è una cartella. Espandila e seleziona un elemento.</Italian>
+            <Polish>CSO: Wybrany element jest folderem. Rozwiń go i wybierz element.</Polish>
+            <Russian>CSO: Выбранный элемент - папка. Разверните её и выберите элемент.</Russian>
+            <Czech>CSO: Vybraná položka je složka. Rozbalte ji a vyberte položku.</Czech>
+            <Portuguese>CSO: O item selecionado é uma pasta. Expanda-a e selecione um item.</Portuguese>
+            <Turkish>CSO: Seçilen öğe bir klasör. Genişletin ve bir öğe seçin.</Turkish>
+            <Chinese>CSO: 选中的项目是文件夹。请展开并选择一个项目。</Chinese>
+            <ChineseTraditional>CSO: 選中的項目是文件夾。請展開並選擇一個項目。</ChineseTraditional>
+            <Japanese>CSO: 選択されたアイテムはフォルダです。展開してアイテムを選択してください。</Japanese>
+            <Korean>CSO: 선택된 항목은 폴더입니다. 확장하여 항목을 선택하십시오.</Korean>
+            <Dutch>CSO: Geselecteerd item is een map. Vouw uit en selecteer een item.</Dutch>
+            <Swedish>CSO: Valt objekt är en mapp. Expandera och välj ett objekt.</Swedish>
+            <Ukrainian>CSO: Вибраний елемент - папка. Розгорніть її і виберіть елемент.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_Read">
+            <Original>CSO ERROR: Could not read data for this item.</Original>
+            <German>CSO FEHLER: Konnte Daten für dieses Element nicht lesen.</German>
+            <French>ERREUR CSO: Impossible de lire les données de cet élément.</French>
+            <Spanish>ERROR CSO: No se pudieron leer los datos de este elemento.</Spanish>
+            <Italian>ERRORE CSO: Impossibile leggere i dati per questo elemento.</Italian>
+            <Polish>BŁĄD CSO: Nie można odczytać danych tego elementu.</Polish>
+            <Russian>ОШИБКА CSO: Не удалось прочитать данные для этого элемента.</Russian>
+            <Czech>CHYBA CSO: Nelze načíst data pro tuto položku.</Czech>
+            <Portuguese>ERRO CSO: Não foi possível ler os dados deste item.</Portuguese>
+            <Turkish>CSO HATASI: Bu öğe için veri okunamadı.</Turkish>
+            <Chinese>CSO 错误：无法读取此项目的数据。</Chinese>
+            <ChineseTraditional>CSO 錯誤：無法讀取此項目的數據。</ChineseTraditional>
+            <Japanese>CSO エラー: このアイテムのデータを読み込めませんでした。</Japanese>
+            <Korean>CSO 오류: 이 항목에 대한 데이터를 읽을 수 없습니다.</Korean>
+            <Dutch>CSO FOUT: Kon gegevens voor dit item niet lezen.</Dutch>
+            <Swedish>CSO FEL: Kunde inte läsa data för detta objekt.</Swedish>
+            <Ukrainian>ПОМИЛКА CSO: Не вдалося прочитати дані для цього елемента.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_FolderLoad">
+            <Original>CSO: Cannot load a folder.</Original>
+            <German>CSO: Ordner kann nicht geladen werden.</German>
+            <French>CSO: Impossible de charger un dossier.</French>
+            <Spanish>CSO: No se puede cargar una carpeta.</Spanish>
+            <Italian>CSO: Impossibile caricare una cartella.</Italian>
+            <Polish>CSO: Nie można załadować folderu.</Polish>
+            <Russian>CSO: Невозможно загрузить папку.</Russian>
+            <Czech>CSO: Nelze načíst složku.</Czech>
+            <Portuguese>CSO: Não é possível carregar uma pasta.</Portuguese>
+            <Turkish>CSO: Klasör yüklenemez.</Turkish>
+            <Chinese>CSO: 无法加载文件夹。</Chinese>
+            <ChineseTraditional>CSO: 無法加載文件夾。</ChineseTraditional>
+            <Japanese>CSO: フォルダをロードできません。</Japanese>
+            <Korean>CSO: 폴더를 로드할 수 없습니다.</Korean>
+            <Dutch>CSO: Kan map niet laden.</Dutch>
+            <Swedish>CSO: Kan inte ladda en mapp.</Swedish>
+            <Ukrainian>CSO: Неможливо завантажити папку.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_CompImported">
+            <Original>CSO: Composition '%1' imported.</Original>
+            <German>CSO: Komposition '%1' importiert.</German>
+            <French>CSO: Composition '%1' importée.</French>
+            <Spanish>CSO: Composición '%1' importada.</Spanish>
+            <Italian>CSO: Composizione '%1' importata.</Italian>
+            <Polish>CSO: Kompozycja '%1' zaimportowana.</Polish>
+            <Russian>CSO: Композиция '%1' импортирована.</Russian>
+            <Czech>CSO: Kompozice '%1' importována.</Czech>
+            <Portuguese>CSO: Composição '%1' importada.</Portuguese>
+            <Turkish>CSO: Kompozisyon '%1' içe aktarıldı.</Turkish>
+            <Chinese>CSO: 组合 '%1' 已导入。</Chinese>
+            <ChineseTraditional>CSO: 組合 '%1' 已導入。</ChineseTraditional>
+            <Japanese>CSO: コンポジション '%1' をインポートしました。</Japanese>
+            <Korean>CSO: 구성 '%1'을 가져왔습니다.</Korean>
+            <Dutch>CSO: Compositie '%1' geïmporteerd.</Dutch>
+            <Swedish>CSO: Komposition '%1' importerad.</Swedish>
+            <Ukrainian>CSO: Композиція '%1' імпортована.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_FolderDelete">
+            <Original>CSO: Cannot delete a folder. Delete items inside first.</Original>
+            <German>CSO: Ordner kann nicht gelöscht werden. Zuerst Inhalt löschen.</German>
+            <French>CSO: Impossible de supprimer un dossier. Supprimez d'abord les éléments à l'intérieur.</French>
+            <Spanish>CSO: No se puede eliminar una carpeta. Elimine primero los elementos del interior.</Spanish>
+            <Italian>CSO: Impossibile eliminare una cartella. Elimina prima gli elementi al suo interno.</Italian>
+            <Polish>CSO: Nie można usunąć folderu. Najpierw usuń elementy wewnątrz.</Polish>
+            <Russian>CSO: Невозможно удалить папку. Сначала удалите элементы внутри.</Russian>
+            <Czech>CSO: Nelze smazat složku. Nejprve smažte položky uvnitř.</Czech>
+            <Portuguese>CSO: Não é possível excluir uma pasta. Exclua os itens dentro primeiro.</Portuguese>
+            <Turkish>CSO: Klasör silinemez. Önce içindeki öğeleri silin.</Turkish>
+            <Chinese>CSO: 无法删除文件夹。请先删除其中的项目。</Chinese>
+            <ChineseTraditional>CSO: 無法刪除文件夾。請先刪除其中的項目。</ChineseTraditional>
+            <Japanese>CSO: フォルダを削除できません。最初に中のアイテムを削除してください。</Japanese>
+            <Korean>CSO: 폴더를 삭제할 수 없습니다. 먼저 내부 항목을 삭제하십시오.</Korean>
+            <Dutch>CSO: Kan map niet verwijderen. Verwijder eerst items erin.</Dutch>
+            <Swedish>CSO: Kan inte ta bort mapp. Ta bort innehåll först.</Swedish>
+            <Ukrainian>CSO: Неможливо видалити папку. Спочатку видаліть елементи всередині.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_ItemDeleted">
+            <Original>CSO: Item Deleted.</Original>
+            <German>CSO: Element gelöscht.</German>
+            <French>CSO: Élément supprimé.</French>
+            <Spanish>CSO: Elemento eliminado.</Spanish>
+            <Italian>CSO: Elemento eliminato.</Italian>
+            <Polish>CSO: Element usunięty.</Polish>
+            <Russian>CSO: Элемент удален.</Russian>
+            <Czech>CSO: Položka smazána.</Czech>
+            <Portuguese>CSO: Item excluído.</Portuguese>
+            <Turkish>CSO: Öğe Silindi.</Turkish>
+            <Chinese>CSO: 项目已删除。</Chinese>
+            <ChineseTraditional>CSO: 項目已刪除。</ChineseTraditional>
+            <Japanese>CSO: アイテムを削除しました。</Japanese>
+            <Korean>CSO: 항목이 삭제되었습니다.</Korean>
+            <Dutch>CSO: Item verwijderd.</Dutch>
+            <Swedish>CSO: Objekt raderat.</Swedish>
+            <Ukrainian>CSO: Елемент видалено.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_FolderEmpty">
+            <Original>CSO: Enter a folder name first (e.g. MyFolder).</Original>
+            <German>CSO: Bitte zuerst Ordnernamen eingeben (z.B. MeinOrdner).</German>
+            <French>CSO: Entrez d'abord un nom de dossier (ex. MonDossier).</French>
+            <Spanish>CSO: Ingrese primero un nombre de carpeta (ej. MiCarpeta).</Spanish>
+            <Italian>CSO: Inserisci prima un nome per la cartella (es. MiaCartella).</Italian>
+            <Polish>CSO: Najpierw wprowadź nazwę folderu (np. MojFolder).</Polish>
+            <Russian>CSO: Сначала введите имя папки (например, MyFolder).</Russian>
+            <Czech>CSO: Nejprve zadejte název složky (např. MojeSlozka).</Czech>
+            <Portuguese>CSO: Digite o nome da pasta primeiro (ex. MinhaPasta).</Portuguese>
+            <Turkish>CSO: Önce bir klasör adı girin (örn. Klasorum).</Turkish>
+            <Chinese>CSO: 请先输入文件夹名称 (例如: MyFolder)。</Chinese>
+            <ChineseTraditional>CSO: 請先輸入文件夾名稱 (例如: MyFolder)。</ChineseTraditional>
+            <Japanese>CSO: 最初にフォルダ名を入力してください (例: MyFolder)。</Japanese>
+            <Korean>CSO: 먼저 폴더 이름을 입력하십시오 (예: MyFolder).</Korean>
+            <Dutch>CSO: Voer eerst een mapnaam in (bijv. MijnMap).</Dutch>
+            <Swedish>CSO: Ange mappnamn först.</Swedish>
+            <Ukrainian>CSO: Спочатку введіть ім'я папки.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_FolderCreated">
+            <Original>CSO: Folder '%1' created.</Original>
+            <German>CSO: Ordner '%1' erstellt.</German>
+            <French>CSO: Dossier '%1' créé.</French>
+            <Spanish>CSO: Carpeta '%1' creada.</Spanish>
+            <Italian>CSO: Cartella '%1' creata.</Italian>
+            <Polish>CSO: Utworzono folder '%1'.</Polish>
+            <Russian>CSO: Папка '%1' создана.</Russian>
+            <Czech>CSO: Složka '%1' vytvořena.</Czech>
+            <Portuguese>CSO: Pasta '%1' criada.</Portuguese>
+            <Turkish>CSO: Klasör '%1' oluşturuldu.</Turkish>
+            <Chinese>CSO: 文件夹 '%1' 已创建。</Chinese>
+            <ChineseTraditional>CSO: 文件夾 '%1' 已創建。</ChineseTraditional>
+            <Japanese>CSO: フォルダ '%1' を作成しました。</Japanese>
+            <Korean>CSO: 폴더 '%1'이 생성되었습니다.</Korean>
+            <Dutch>CSO: Map '%1' gemaakt.</Dutch>
+            <Swedish>CSO: Mapp '%1' skapad.</Swedish>
+            <Ukrainian>CSO: Папку '%1' створено.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Prompt_Name">
+            <Original>CSO: Please enter a name!</Original>
+            <German>CSO: Bitte geben Sie einen Namen ein!</German>
+            <French>CSO: Veuillez entrer un nom !</French>
+            <Spanish>CSO: ¡Por favor ingrese un nombre!</Spanish>
+            <Italian>CSO: Inserisci un nome!</Italian>
+            <Polish>CSO: Proszę wprowadzić nazwę!</Polish>
+            <Russian>CSO: Пожалуйста, введите имя!</Russian>
+            <Czech>CSO: Zadejte prosím název!</Czech>
+            <Portuguese>CSO: Por favor, insira um nome!</Portuguese>
+            <Turkish>CSO: Lütfen bir isim girin!</Turkish>
+            <Chinese>CSO: 请输入名称！</Chinese>
+            <ChineseTraditional>CSO: 請輸入名稱！</ChineseTraditional>
+            <Japanese>CSO: 名前を入力してください！</Japanese>
+            <Korean>CSO: 이름을 입력해 주세요!</Korean>
+            <Dutch>CSO: Voer een naam in!</Dutch>
+            <Swedish>CSO: Vänligen ange ett namn!</Swedish>
+            <Ukrainian>CSO: Будь ласка, введіть ім'я!</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_UtilsFail">
+            <Original>CSO ERROR: Utilities failed to load.</Original>
+            <German>CSO FEHLER: Utilities konnten nicht geladen werden.</German>
+            <French>ERREUR CSO: Échec du chargement des utilitaires.</French>
+            <Spanish>ERROR CSO: No se pudieron cargar las utilidades.</Spanish>
+            <Italian>ERRORE CSO: Impossibile caricare le utilità.</Italian>
+            <Polish>BŁĄD CSO: Narzędzia nie zostały załadowane.</Polish>
+            <Russian>ОШИБКА CSO: Не удалось загрузить утилиты.</Russian>
+            <Czech>CHYBA CSO: Nástroje se nepodařilo načíst.</Czech>
+            <Portuguese>ERRO CSO: Falha ao carregar utilitários.</Portuguese>
+            <Turkish>CSO HATASI: Araçlar yüklenemedi.</Turkish>
+            <Chinese>CSO 错误：工具加载失败。</Chinese>
+            <ChineseTraditional>CSO 錯誤：工具加載失敗。</ChineseTraditional>
+            <Japanese>CSO エラー: ユーティリティの読み込みに失敗しました。</Japanese>
+            <Korean>CSO 오류: 유틸리티를 로드하지 못했습니다.</Korean>
+            <Dutch>CSO FOUT: Hulpprogramma's konden niet worden geladen.</Dutch>
+            <Swedish>CSO FEL: Verktyg kunde inte laddas.</Swedish>
+            <Ukrainian>ПОМИЛКА CSO: Утиліти не вдалося завантажити.</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Err_InvalidRestoration">
+            <Original>CSO ERROR: Invalid data for restoration.</Original>
+            <German>CSO FEHLER: Ungültige Daten für Wiederherstellung.</German>
+            <French>ERREUR CSO: Données invalides pour la restauration.</French>
+            <Spanish>ERROR CSO: Datos no válidos para la restauración.</Spanish>
+            <Italian>ERRORE CSO: Dati non validi per il ripristino.</Italian>
+            <Polish>BŁĄD CSO: Nieprawidłowe dane do przywrócenia.</Polish>
+            <Russian>ОШИБКА CSO: Недопустимые данные для восстановления.</Russian>
+            <Czech>CHYBA CSO: Neplatná data pro obnovení.</Czech>
+            <Portuguese>ERRO CSO: Dados inválidos para restauração.</Portuguese>
+            <Turkish>CSO HATASI: Geri yükleme için geçersiz veri.</Turkish>
+            <Chinese>CSO 错误：恢复数据无效。</Chinese>
+            <ChineseTraditional>CSO 錯誤：恢復數據無效。</ChineseTraditional>
+            <Japanese>CSO エラー: 復元データが無効です。</Japanese>
+            <Korean>CSO 오류: 복원 데이터가 유효하지 않습니다.</Korean>
+            <Dutch>CSO FOUT: Ongeldige herstelgegevens.</Dutch>
+            <Swedish>CSO FEL: Ogiltig data för återställning.</Swedish>
+            <Ukrainian>ПОМИЛКА CSO: Недійсні дані для відновлення.</Ukrainian>
+        </Key>
+    </Package>
+    <Package name="UI">
+        <Key ID="STR_CSO_SearchPlaceHolder">
+            <Original>Search...</Original>
+            <German>Suchen...</German>
+            <French>Rechercher...</French>
+            <Spanish>Buscar...</Spanish>
+            <Italian>Cerca...</Italian>
+            <Polish>Szukaj...</Polish>
+            <Russian>Поиск...</Russian>
+            <Czech>Hledat...</Czech>
+            <Portuguese>Pesquisar...</Portuguese>
+            <Turkish>Ara...</Turkish>
+            <Chinese>搜索...</Chinese>
+            <ChineseTraditional>搜索...</ChineseTraditional>
+            <Japanese>検索...</Japanese>
+            <Korean>검색...</Korean>
+            <Dutch>Zoeken...</Dutch>
+            <Swedish>Sök...</Swedish>
+            <Ukrainian>Пошук...</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Help_Title">
+            <Original>CSO Help &amp; Guide</Original>
+            <German>CSO Hilfe &amp; Anleitung</German>
+            <French>Aide et Guide CSO</French>
+            <Spanish>Ayuda y Guía de CSO</Spanish>
+            <Italian>Guida e Aiuto CSO</Italian>
+            <Polish>Pomoc i przewodnik CSO</Polish>
+            <Russian>Справка и руководство CSO</Russian>
+            <Czech>Nápověda a průvodce CSO</Czech>
+            <Portuguese>Ajuda e Guia do CSO</Portuguese>
+            <Turkish>CSO Yardım ve Rehber</Turkish>
+            <Chinese>CSO 帮助与指南</Chinese>
+            <ChineseTraditional>CSO 幫助與指南</ChineseTraditional>
+            <Japanese>CSO ヘルプ＆ガイド</Japanese>
+            <Korean>CSO 도움말 및 가이드</Korean>
+            <Dutch>CSO Hulp &amp; Gids</Dutch>
+            <Swedish>CSO Hjälp &amp; Guide</Swedish>
+            <Ukrainian>Довідка та посібник CSO</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Context_Opt">
+            <Original>Save to Library</Original>
+            <German>In Bibliothek speichern</German>
+            <French>Enregistrer dans la bibliothèque</French>
+            <Spanish>Guardar en la biblioteca</Spanish>
+            <Italian>Salva nella libreria</Italian>
+            <Polish>Zapisz w bibliotece</Polish>
+            <Russian>Сохранить в библиотеку</Russian>
+            <Czech>Uložit do knihovny</Czech>
+            <Portuguese>Salvar na biblioteca</Portuguese>
+            <Turkish>Kütüphaneye Kaydet</Turkish>
+            <Chinese>保存到库</Chinese>
+            <ChineseTraditional>保存到庫</ChineseTraditional>
+            <Japanese>ライブラリに保存</Japanese>
+            <Korean>라이브러리에 저장</Korean>
+            <Dutch>Opslaan in bibliotheek</Dutch>
+            <Swedish>Spara i biblioteket</Swedish>
+            <Ukrainian>Зберегти в бібліотеку</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Context_Clip">
+            <Original>Copy Code</Original>
+            <German>Code kopieren</German>
+            <French>Copier le code</French>
+            <Spanish>Copiar código</Spanish>
+            <Italian>Copia codice</Italian>
+            <Polish>Kopiuj kod</Polish>
+            <Russian>Копировать код</Russian>
+            <Czech>Kopírovat kód</Czech>
+            <Portuguese>Copiar código</Portuguese>
+            <Turkish>Kodu Kopyala</Turkish>
+            <Chinese>复制代码</Chinese>
+            <ChineseTraditional>複製代碼</ChineseTraditional>
+            <Japanese>コードをコピー</Japanese>
+            <Korean>코드 복사</Korean>
+            <Dutch>Code kopiëren</Dutch>
+            <Swedish>Kopiera kod</Swedish>
+            <Ukrainian>Копіювати код</Ukrainian>
+        </Key>
+        <Key ID="STR_CSO_Help_Content">
+            <Original>Welcome to CSO!
+            
+1. SELECT objects in Eden.
+2. Check 'Create as simple object?' in attributes.
+3. Open Tools > CSO Library to SAVE.
+4. Use LAYERS to organize restored items.
+
+Pro Tip: Right-click objects to quick-save!</Original>
+            <German>Willkommen bei CSO!
+
+1. Objekte in Eden AUSWÄHLEN.
+2. 'Als einfaches Objekt erstellen?' in den Attributen aktivieren.
+3. Werkzeuge > CSO Bibliothek öffnen zum SPEICHERN.
+4. Ebenen nutzen, um wiederhergestellte Elemente zu organisieren.
+
+Profi-Tipp: Rechtsklick auf Objekte zum Schnellspeichern!</German>
+            <French>Bienvenue sur CSO !
+
+1. SÉLECTIONNEZ des objets dans Eden.
+2. Cochez 'Créer comme objet simple ?' dans les attributs.
+3. Ouvrez Outils > Bibliothèque CSO pour ENREGISTRER.
+4. Utilisez les CALQUES pour organiser les éléments restaurés.
+
+Astuce Pro : Clic droit sur les objets pour une sauvegarde rapide !</French>
+            <Spanish>¡Bienvenido a CSO!
+
+1. SELECCIONA objetos en Eden.
+2. Marca '¿Crear como objeto simple?' en los atributos.
+3. Abre Herramientas > Biblioteca CSO para GUARDAR.
+4. Usa CAPAS para organizar elementos restaurados.
+
+Consejo Pro: ¡Haz clic derecho en los objetos para guardar rápido!</Spanish>
+            <Italian>Benvenuto in CSO!
+
+1. SELEZIONA gli oggetti in Eden.
+2. Seleziona 'Crea come oggetto semplice?' negli attributi.
+3. Apri Strumenti > Libreria CSO per SALVARE.
+4. Usa i LIVELLI per organizzare gli elementi ripristinati.
+
+Consiglio Pro: Tasto destro sugli oggetti per il salvataggio rapido!</Italian>
+            <Polish>Witamy w CSO!
+
+1. WYBIERZ obiekty w Eden.
+2. Zaznacz 'Utwórz jako prosty obiekt?' w atrybutach.
+3. Otwórz Narzędzia > Biblioteka CSO, aby ZAPISAĆ.
+4. Używaj WARSTW do organizowania przywróconych elementów.
+
+Wskazówka: Kliknij prawym przyciskiem myszy na obiekty, aby szybko zapisać!</Polish>
+            <Russian>Добро пожаловать в CSO!
+
+1. ВЫБЕРИТЕ объекты в Eden.
+2. Отметьте 'Создать как простой объект?' в атрибутах.
+3. Откройте Инструменты > Библиотека CSO, чтобы СОХРАНИТЬ.
+4. Используйте СЛОИ для организации восстановленных элементов.
+
+Совет профи: Щелкните правой кнопкой мыши по объектам для быстрого сохранения!</Russian>
+            <Czech>Vítejte v CSO!
+
+1. VYBERTE objekty v Edenu.
+2. Zaškrtněte 'Vytvořit jako jednoduchý objekt?' v atributech.
+3. Otevřete Nástroje > Knihovna CSO pro ULOŽENÍ.
+4. Používejte VRSTVY pro organizaci obnovených položek.
+
+Tip: Pravým tlačítkem myši na objekty pro rychlé uložení!</Czech>
+            <Portuguese>Bem-vindo ao CSO!
+
+1. SELECIONE objetos no Eden.
+2. Marque 'Criar como objeto simples?' nos atributos.
+3. Abra Ferramentas > Biblioteca CSO para SALVAR.
+4. Use CAMADAS para organizar itens restaurados.
+
+Dica Pro: Clique com o botão direito nos objetos para salvar rápido!</Portuguese>
+            <Turkish>CSO'ya Hoş Geldiniz!
+
+1. Eden'de nesneleri SEÇİN.
+2. Özelliklerde 'Basit nesne olarak oluştur?' işaretleyin.
+3. KAYDETMEK için Araçlar > CSO Kütüphanesi'ni açın.
+4. Geri yüklenen öğeleri düzenlemek için KATMANLARI kullanın.
+
+İpucu: Hızlı kaydetmek için nesnelere sağ tıklayın!</Turkish>
+            <Chinese>欢迎使用 CSO！
+
+1. 在 Eden 中选择对象。
+2. 在属性中勾选“创建为简单对象？”。
+3. 打开 工具 > CSO 库 进行保存。
+4. 使用图层整理恢复的项目。
+
+专业提示：右键单击对象可快速保存！</Chinese>
+            <ChineseTraditional>歡迎使用 CSO！
+
+1. 在 Eden 中選擇對象。
+2. 在屬性中勾選“創建為簡單對象？”。
+3. 打開 工具 > CSO 庫 進行保存。
+4. 使用圖層整理恢復的項目。
+
+專業提示：右鍵單擊對象可快速保存！</ChineseTraditional>
+            <Japanese>CSOへようこそ！
+
+1. Edenでオブジェクトを選択します。
+2. 属性の「シンプルオブジェクトとして作成?」をチェックします。
+3. ツール > CSOライブラリを開いて保存します。
+4. 復元されたアイテムを整理するためにレイヤーを使用します。
+
+プロのヒント：オブジェクトを右クリックしてクイック保存！</Japanese>
+            <Korean>CSO에 오신 것을 환영합니다!
+
+1. Eden에서 개체를 선택합니다.
+2. 속성에서 '단순 개체로 생성?'을 선택합니다.
+3. 도구 > CSO 라이브러리를 열어 저장합니다.
+4. 복원된 항목을 정리하려면 레이어를 사용합니다.
+
+프로 팁: 개체를 마우스 오른쪽 버튼으로 클릭하여 빠른 저장!</Korean>
+            <Dutch>Welkom bij CSO!
+
+1. SELECTEER objecten in Eden.
+2. Vink 'Maak als eenvoudig object?' aan in attributen.
+3. Open Gereedschappen > CSO Bibliotheek om OP TE SLAAN.
+4. Gebruik LAGEN om herstelde items te ordenen.
+
+Pro Tip: Klik met de rechtermuisknop op objecten voor snel opslaan!</Dutch>
+            <Swedish>Välkommen till CSO!
+
+1. VÄLJ objekt i Eden.
+2. Markera 'Skapa som enkelt objekt?' i attribut.
+3. Öppna Verktyg > CSO Bibliotek för att SPARA.
+4. Använd LAGER för att organisera återställda objekt.
+
+Tips: Högerklicka på objekt för att snabbspara!</Swedish>
+            <Ukrainian>Ласкаво просимо в CSO!
+
+1. ВИБЕРІТЬ об'єкти в Eden.
+2. Позначте 'Створити як простий об'єкт?' у властивостях.
+3. Відкрийте Інструменти > Бібліотека CSO, щоб ЗБЕРЕГТИ.
+4. Використовуйте ШАРИ для організації відновлених елементів.
+
+Порада профі: Клацніть правою кнопкою миші на об'єктах для швидкого збереження!</Ukrainian>
+        </Key>
+    </Package>
+</Project>

@@ -1,0 +1,14 @@
+﻿name = "TBD_3den_Tools";
+author = "Darkforce";
+tooltip = "TBD 3den Tools";
+tooltipOwned = "TBD 3den Tools Installed";
+picture = "";
+logo = "";
+logoOver = "";
+overview = "The TBD 3den Tools is the ultimate 3den editor tool for Arma 3 map makers. It provides a set of tools to help you create and edit 3den editor objects more efficiently.";
+overviewPicture = "";
+dlcColor[] = {0.85, 0.55, 0, 1}; // Professional Orange/Gold branding
+hideName = 0;
+hidePicture = 0;
+actionName = "Website";
+action = "https://github.com/Darkforce/Arma3-TBD_3den_Tools";
