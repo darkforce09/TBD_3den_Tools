@@ -9,7 +9,7 @@ Converts objects into Simple Objects to improve frame rates.
 *   **Mass conversion**: Can handle thousands of objects.
 *   **Attributes**:
     *   **Align to Terrain**: Aligns objects to the terrain normal.
-    *   **Force Super Simple**: Disables texturing to save performance, but keeps collision.
+    *   **Force Super Simple**: More frames, no texuring though
 *   **Non-Destructive**: Objects can be restored to their original state.
 
 ### Global Library
