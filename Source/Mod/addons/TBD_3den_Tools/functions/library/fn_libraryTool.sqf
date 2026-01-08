@@ -353,9 +353,10 @@ TBD_fnc_DoSaveInfo = {
     // Serialization
     private _author = profileName;
     private _sysTime = systemTime; 
-    private _months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-    private _mStr = _months select ((_sysTime#1) - 1);
-    private _dateStr = format ["%1 %2, %3", _mStr, _sysTime#2, _sysTime#0];
+    private _y = _sysTime#0;
+    private _m = _sysTime#1;
+    private _d = _sysTime#2;
+    private _dateStr = format ["%1-%2-%3", _y, if (_m < 10) then {"0" + str _m} else {_m}, if (_d < 10) then {"0" + str _d} else {_d}];
     
     private _cnt = count _data;
     private _sizeStr = format ["%1 Objects", _cnt];
