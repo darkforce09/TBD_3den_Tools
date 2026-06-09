@@ -11,4 +11,4 @@ dlcColor[] = {0.85, 0.55, 0, 1}; // Professional Orange/Gold branding
 hideName = 0;
 hidePicture = 0;
 actionName = "Website";
-action = "https://github.com/Darkforce/Arma3-TBD_3den_Tools";
+action = "https://github.com/darkforce09/TBD_3den_Tools";

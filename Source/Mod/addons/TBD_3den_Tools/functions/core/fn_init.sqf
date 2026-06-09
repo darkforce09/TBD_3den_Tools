@@ -6,6 +6,12 @@
     Returns: None
 */
 
+// Shared helper: replace all occurrences of a character in a string
+TBD_fnc_db_replace = {
+    params ["_str", "_find", "_rep"];
+    _str splitString _find joinString _rep
+};
+
 if (is3DEN) then {
     systemChat "------------------------------------------------";
     systemChat "TBD Tools: Optimization Suite Initialized.";

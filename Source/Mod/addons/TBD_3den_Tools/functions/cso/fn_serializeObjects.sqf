@@ -51,7 +51,7 @@ private _textureCache = createHashMap;
     };
     
     // 2. Extract Common Attributes (Position, Rotation)
-    private _pos = "[(0,0,0)]";
+    private _pos = "[0,0,0]";
     private _dir = 0;
     private _vec = [[0,1,0],[0,0,1]];
     private _model = "";

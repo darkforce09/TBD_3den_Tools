@@ -7,17 +7,7 @@
 */
 
 // Find valid objects
-private _allMissionObjects = (all3DENEntities select 0);
-private _markedObjects = [];
-
-{
-    // Check attribute
-    private _isSimpleObject = (_x get3DENAttribute "CSObject") select 0;
-    
-    if (_isSimpleObject) then {
-        _markedObjects pushBack _x;
-    };
-} forEach _allMissionObjects;
+private _markedObjects = call TBD_fnc_collectSimpleObjects;
 
 // Select objects
 if (count _markedObjects > 0) then {

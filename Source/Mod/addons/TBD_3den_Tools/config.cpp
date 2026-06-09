@@ -172,11 +172,14 @@ class CfgFunctions {
       file = "TBD_3den_Tools\functions\library";
       class database {};
       class libraryTool {};
+      class libraryTree {};
+      class libraryActions {};
     };
     class CSO {
       file = "TBD_3den_Tools\functions\cso";
       class serializeObjects {};
       class restoreObjects {};
+      class parseLogicData {};
       class createLogic {
         file = "TBD_3den_Tools\functions\cso\fn_toolCreateLogic.sqf";
       };

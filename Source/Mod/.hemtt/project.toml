@@ -1,0 +1,12 @@
+name = "TBD 3den Tools"
+author = "Darkforce"
+prefix = "TBD_3den_Tools"
+mainprefix = ""
+
+[version]
+major = 3
+minor = 0
+patch = 0
+
+[files]
+exclude = ["*.dll"]

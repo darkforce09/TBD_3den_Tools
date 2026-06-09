@@ -17,13 +17,7 @@ TBD_fnc_RunDelete = {
 };
 
 // Find marked objects
-private _allMissionObjects = (all3DENEntities select 0);
-private _objectsToDelete = [];
-
-{
-    private _isSimpleObject = (_x get3DENAttribute "CSObject") select 0;
-    if (_isSimpleObject) then { _objectsToDelete pushBack _x; };
-} forEach _allMissionObjects;
+private _objectsToDelete = call TBD_fnc_collectSimpleObjects;
 
 // Confirm deletion
 private _count = count _objectsToDelete;

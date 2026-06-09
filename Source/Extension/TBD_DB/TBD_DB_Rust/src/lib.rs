@@ -1,5 +1,8 @@
-use std::ffi::{CStr, CString};
-use std::os::raw::{c_char, c_int};
+// The crate name must match the DLL name Arma expects (TBD_DB_x64).
+#![allow(non_snake_case)]
+
+use std::ffi::CStr;
+use std::os::raw::c_char;
 use std::ptr;
 use std::cmp;
 use lazy_static::lazy_static;
@@ -13,9 +16,36 @@ const CHUNK_SIZE: usize = 9000;
 const MAX_DB_SIZE: u64 = 1024 * 1024 * 1024; // 1024 MB
 
 // -- State --
+struct CachedRead {
+    data: Vec<u8>,
+    chunks: Vec<(usize, usize)>,
+}
+
 struct AppState {
     conn: Option<Connection>,
-    read_cache: HashMap<String, Vec<u8>>,
+    read_cache: HashMap<String, CachedRead>,
+}
+
+/// Splits `data` into byte ranges of at most CHUNK_SIZE, snapping each cut to
+/// a UTF-8 char boundary so multi-byte characters are never split across
+/// chunks (which would corrupt them via from_utf8_lossy).
+fn compute_chunks(data: &[u8]) -> Vec<(usize, usize)> {
+    let len = data.len();
+    let mut chunks = Vec::with_capacity(len / CHUNK_SIZE + 1);
+    let mut start = 0;
+    while start < len {
+        let mut end = cmp::min(start + CHUNK_SIZE, len);
+        while end > start && end < len && (data[end] & 0xC0) == 0x80 {
+            end -= 1;
+        }
+        if end == start {
+            // Not valid UTF-8 at this position; fall back to a hard byte cut.
+            end = cmp::min(start + CHUNK_SIZE, len);
+        }
+        chunks.push((start, end));
+        start = end;
+    }
+    chunks
 }
 
 lazy_static! {
@@ -29,7 +59,7 @@ lazy_static! {
 fn init_db(state: &mut AppState) -> Result<(), String> {
     if state.conn.is_some() { return Ok(()); }
     let db_path = DB_FILENAME;
-    let conn = Connection::open(&db_path).map_err(|e| format!("DB Open Error: {}", e))?;
+    let conn = Connection::open(db_path).map_err(|e| format!("DB Open Error: {}", e))?;
     conn.execute("PRAGMA journal_mode=WAL;", []).ok();
     conn.execute("PRAGMA synchronous=NORMAL;", []).ok();
     conn.execute(
@@ -46,6 +76,9 @@ fn init_db(state: &mut AppState) -> Result<(), String> {
 
 // -- ARMA 3 EXTENSION ENTRY POINTS --
 
+/// # Safety
+/// Called by the Arma 3 engine. `output` must point to a writable buffer of
+/// at least `output_size` bytes.
 #[no_mangle]
 pub unsafe extern "C" fn RVExtensionVersion(output: *mut c_char, output_size: usize) {
     let version = "3.0.0";
@@ -56,6 +89,9 @@ pub unsafe extern "C" fn RVExtensionVersion(output: *mut c_char, output_size: us
     }
 }
 
+/// # Safety
+/// Called by the Arma 3 engine. `output` must point to a writable buffer of
+/// at least `output_size` bytes and `function` must be a valid NUL-terminated string.
 #[no_mangle]
 pub unsafe extern "C" fn RVExtension(output: *mut c_char, output_size: usize, function: *const c_char) {
     let func_str = CStr::from_ptr(function).to_string_lossy();
@@ -128,8 +164,8 @@ fn list() -> String {
             let rows = stmt.query_map([], |row| row.get::<_, String>(0));
             let mut result = Vec::new();
             if let Ok(iter) = rows {
-                for r in iter {
-                    if let Ok(path) = r { result.push(path); }
+                for path in iter.flatten() {
+                    result.push(path);
                 }
             }
             let json = serde_json::to_string(&result).unwrap_or("[]".into());
@@ -187,13 +223,14 @@ fn read_init(filename: String) -> String {
 
     if let Some(data) = found_data {
         let size = data.len();
-        let chunks = if size > 0 { (size / CHUNK_SIZE) + 1 } else { 1 };
+        let chunks = compute_chunks(&data);
+        let chunk_count = chunks.len();
         
         // Cache
         if state.read_cache.len() > 100 { state.read_cache.clear(); }
-        state.read_cache.insert(filename, data);
+        state.read_cache.insert(filename, CachedRead { data, chunks });
         
-        return format!("{}|{}", size, chunks);
+        return format!("{}|{}", size, chunk_count);
     }
     "ERROR: Not Found".into()
 }
@@ -205,12 +242,9 @@ fn read_chunk(filename: String, index: i32) -> String {
 
     let filename = filename.replace('\\', "/");
     
-    if let Some(data) = state.read_cache.get(&filename) {
-        let start = (index as usize) * CHUNK_SIZE;
-        if start < data.len() {
-            let end = std::cmp::min(start + CHUNK_SIZE, data.len());
-            let chunk_data = String::from_utf8_lossy(&data[start..end]).to_string();
-            return chunk_data;
+    if let Some(cached) = state.read_cache.get(&filename) {
+        if let Some(&(start, end)) = cached.chunks.get(index as usize) {
+            return String::from_utf8_lossy(&cached.data[start..end]).to_string();
         }
     }
     "ERROR: Cache Miss".into()
@@ -224,4 +258,54 @@ fn delete(filename: String) -> String {
         conn.execute("DELETE FROM filesystem WHERE path = ?", [&filename]).ok();
     }
     "OK".into()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    fn chunk_count(n: usize) -> usize {
+        compute_chunks(&vec![b'a'; n]).len()
+    }
+
+    #[test]
+    fn chunk_counts_at_boundaries() {
+        assert_eq!(chunk_count(0), 0);
+        assert_eq!(chunk_count(1), 1);
+        assert_eq!(chunk_count(8999), 1);
+        assert_eq!(chunk_count(9000), 1); // exactly one full chunk, not two
+        assert_eq!(chunk_count(9001), 2);
+        assert_eq!(chunk_count(18000), 2);
+        assert_eq!(chunk_count(18001), 3);
+    }
+
+    #[test]
+    fn chunks_are_contiguous_and_cover_all_data() {
+        let data = vec![b'x'; 25000];
+        let chunks = compute_chunks(&data);
+        assert_eq!(chunks.first().unwrap().0, 0);
+        assert_eq!(chunks.last().unwrap().1, data.len());
+        for pair in chunks.windows(2) {
+            assert_eq!(pair[0].1, pair[1].0);
+        }
+        assert!(chunks.iter().all(|&(s, e)| e > s && e - s <= CHUNK_SIZE));
+    }
+
+    #[test]
+    fn multibyte_chars_are_never_split() {
+        // Place 2-byte chars so the 9000-byte mark lands inside a character.
+        let mut s = "a".repeat(8999);
+        s.push_str(&"é".repeat(20));
+        s.push_str(&"x".repeat(12000));
+        let data = s.as_bytes();
+        let chunks = compute_chunks(data);
+        let mut rebuilt = String::new();
+        for &(start, end) in &chunks {
+            let part = std::str::from_utf8(&data[start..end])
+                .expect("chunk boundary split a multi-byte character");
+            rebuilt.push_str(part);
+        }
+        assert_eq!(rebuilt, s);
+        assert!(chunks.iter().all(|&(start, end)| end - start <= CHUNK_SIZE));
+    }
 }

@@ -1,0 +1,39 @@
+name: Extension CI
+
+on:
+  push:
+    paths:
+      - "Source/Extension/**"
+      - ".github/workflows/extension.yml"
+  pull_request:
+    paths:
+      - "Source/Extension/**"
+      - ".github/workflows/extension.yml"
+
+defaults:
+  run:
+    working-directory: Source/Extension/TBD_DB/TBD_DB_Rust
+
+jobs:
+  test:
+    name: Test and Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - run: cargo test
+      - run: cargo clippy --all-targets -- -D warnings
+
+  build-dll:
+    name: Build Windows DLL
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - run: cargo build --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TBD_DB_x64
+          path: Source/Extension/TBD_DB/TBD_DB_Rust/target/release/TBD_DB_x64.dll
