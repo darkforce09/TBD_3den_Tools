@@ -47,7 +47,7 @@ switch (_mode) do {
             } else {
                 _result = parseSimpleArray _extRes;
                 if (isNil "_result") then { _result = []; };
-                // Normalize legacy '~' separators to '/'
+                // Library paths stored with "~" separators display with "/"
                 _result = _result apply { [_x, "~", "/"] call TBD_fnc_db_replace };
             };
         };

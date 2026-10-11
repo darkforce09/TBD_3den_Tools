@@ -241,7 +241,7 @@ class RscTree
     };
     
     shadow = 0;
-    mcolor[] = {0,0,0,0}; // Legacy
+    mcolor[] = {0,0,0,0};
 };
 
 class RscButton

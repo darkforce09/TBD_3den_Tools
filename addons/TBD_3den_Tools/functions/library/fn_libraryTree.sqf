@@ -132,7 +132,7 @@ TBD_fnc_ShowDetails = {
                     private _fileSizeKB = (count _strData) / 1024;
                     _size = format ["%1 (%2 KB)", _size, _fileSizeKB toFixed 1];
                 } else {
-                    // Legacy Array
+                    // Unversioned array without the TBD_V2 header
                     private _fileSizeKB = (count _strData) / 1024;
                     _size = format ["Legacy Format (%1 KB)", _fileSizeKB toFixed 1];
                 };

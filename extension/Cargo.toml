@@ -1,9 +1,9 @@
 [package]
-name = "cso_db_rust"
+name = "tbd_db_extension"
 version = "3.0.0"
 edition = "2021"
 authors = ["Antigravity"]
-description = "Arma 3 Extension for SQLite Database (Rust Port)"
+description = "Arma 3 extension that stores the TBD 3den Tools composition library in SQLite"
 
 [lib]
 crate-type = ["cdylib"]

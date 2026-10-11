@@ -82,7 +82,7 @@ TBD_fnc_DoSaveInfo = {
     private _data = [];
     private _imported = false;
 
-    // Special Case: Import from Logic (Handle Legacy Logic Item Import)
+    // One selected Game Logic: import the composition stored in its Init code
     if (count _allSelected == 1 && {(_allSelected select 0) isKindOf "Logic"}) then {
         private _logic = _allSelected select 0;
         private _initCode = (_logic get3DENAttribute "Init") select 0;
@@ -164,7 +164,7 @@ TBD_fnc_LoadGroup = {
         if (count _parsed > 0 && {_parsed select 0 isEqualType ""} && {_parsed select 0 == "TBD_V2"}) then {
             _data = _parsed select 2;
         } else {
-            // Legacy
+            // Unversioned array: the whole array is the object list
             _data = _parsed;
         };
     } else {

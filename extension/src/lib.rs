@@ -1,14 +1,14 @@
 // The crate name must match the DLL name Arma expects (TBD_DB_x64).
 #![allow(non_snake_case)]
 
-use std::ffi::CStr;
-use std::os::raw::c_char;
-use std::ptr;
-use std::cmp;
 use lazy_static::lazy_static;
 use parking_lot::Mutex;
 use rusqlite::{Connection, Result};
+use std::cmp;
 use std::collections::HashMap;
+use std::ffi::CStr;
+use std::os::raw::c_char;
+use std::ptr;
 
 // -- Configuration --
 const DB_FILENAME: &str = "TBD_DB.db";
@@ -57,7 +57,9 @@ lazy_static! {
 
 // -- Helpers --
 fn init_db(state: &mut AppState) -> Result<(), String> {
-    if state.conn.is_some() { return Ok(()); }
+    if state.conn.is_some() {
+        return Ok(());
+    }
     let db_path = DB_FILENAME;
     let conn = Connection::open(db_path).map_err(|e| format!("DB Open Error: {}", e))?;
     conn.execute("PRAGMA journal_mode=WAL;", []).ok();
@@ -69,7 +71,8 @@ fn init_db(state: &mut AppState) -> Result<(), String> {
             size INTEGER
         )",
         [],
-    ).map_err(|e| format!("Create Table Error: {}", e))?;
+    )
+    .map_err(|e| format!("Create Table Error: {}", e))?;
     state.conn = Some(conn);
     Ok(())
 }
@@ -93,21 +96,25 @@ pub unsafe extern "C" fn RVExtensionVersion(output: *mut c_char, output_size: us
 /// Called by the Arma 3 engine. `output` must point to a writable buffer of
 /// at least `output_size` bytes and `function` must be a valid NUL-terminated string.
 #[no_mangle]
-pub unsafe extern "C" fn RVExtension(output: *mut c_char, output_size: usize, function: *const c_char) {
+pub unsafe extern "C" fn RVExtension(
+    output: *mut c_char,
+    output_size: usize,
+    function: *const c_char,
+) {
     let func_str = CStr::from_ptr(function).to_string_lossy();
-    
+
     // Dispatch Command
     let result = handle_command(&func_str);
-    
+
     // Return String
     let res_bytes = result.as_bytes();
     let len = res_bytes.len();
-    
+
     // Arma output buffer is usually 10kb+ but safe to check
     // We must reserve 1 byte for null terminator
-    let max_len = output_size - 1; 
+    let max_len = output_size - 1;
     let copy_len = cmp::min(len, max_len);
-    
+
     ptr::copy_nonoverlapping(res_bytes.as_ptr(), output as *mut u8, copy_len);
     *output.add(copy_len) = 0;
 }
@@ -116,39 +123,49 @@ pub unsafe extern "C" fn RVExtension(output: *mut c_char, output_size: usize, fu
 // Format: "CMD|ARG1|ARG2..."
 fn handle_command(input: &str) -> String {
     let parts: Vec<&str> = input.split('|').collect();
-    if parts.is_empty() { return "ERROR: Empty Command".into(); }
-    
+    if parts.is_empty() {
+        return "ERROR: Empty Command".into();
+    }
+
     let cmd = parts[0];
-    
+
     match cmd {
         "version" => "3.0.0".into(),
         "list" => list(),
         "write" => {
-            if parts.len() < 3 { return "ERROR: Missing Args".into(); }
+            if parts.len() < 3 {
+                return "ERROR: Missing Args".into();
+            }
             // write|filename|data
             // If data contains |, it's split. We must join headers [2..]
             let filename = parts[1].to_string();
             let data = parts[2..].join("|"); // Re-join if data had pipes
             write(filename, data)
-        },
+        }
         "read_init" => {
-            if parts.len() < 2 { return "ERROR: Missing Args".into(); }
+            if parts.len() < 2 {
+                return "ERROR: Missing Args".into();
+            }
             let filename = parts[1].to_string();
             read_init(filename)
-        },
+        }
         "read_chunk" => {
-             if parts.len() < 3 { return "ERROR: Missing Args".into(); }
-             let filename = parts[1].to_string();
-             let idx_str = parts[2];
-             let idx = idx_str.parse::<i32>().unwrap_or(-1);
-             read_chunk(filename, idx)
-        },
+            if parts.len() < 3 {
+                return "ERROR: Missing Args".into();
+            }
+            let filename = parts[1].to_string();
+            let idx_str = parts[2];
+            let idx = idx_str.parse::<i32>().unwrap_or(-1);
+            read_chunk(filename, idx)
+        }
         "delete" => {
-            if parts.len() < 2 { return "ERROR: Missing Args".into(); }
+            if parts.len() < 2 {
+                return "ERROR: Missing Args".into();
+            }
             let filename = parts[1].to_string();
             delete(filename)
-        },
-        _ => "ERROR: Unknown Command".into()
+        }
+        _ => "ERROR: Unknown Command".into(),
     }
 }
 
@@ -156,8 +173,10 @@ fn handle_command(input: &str) -> String {
 
 fn list() -> String {
     let mut state = STATE.lock();
-    if let Err(e) = init_db(&mut state) { return format!("ERROR: {}", e); }
-    
+    if let Err(e) = init_db(&mut state) {
+        return format!("ERROR: {}", e);
+    }
+
     if let Some(conn) = &state.conn {
         let stmt_result = conn.prepare("SELECT path FROM filesystem");
         if let Ok(mut stmt) = stmt_result {
@@ -177,18 +196,22 @@ fn list() -> String {
 
 fn write(filename: String, data: String) -> String {
     let mut state = STATE.lock();
-    if let Err(e) = init_db(&mut state) { return format!("ERROR: {}", e); }
+    if let Err(e) = init_db(&mut state) {
+        return format!("ERROR: {}", e);
+    }
 
     let filename = filename.replace('\\', "/");
-    if filename.is_empty() || filename.len() > 256 { return "ERROR: Invalid Name".into(); }
+    if filename.is_empty() || filename.len() > 256 {
+        return "ERROR: Invalid Name".into();
+    }
 
     // Check Quota
     if let Ok(meta) = std::fs::metadata(DB_FILENAME) {
         if meta.len() + (data.len() as u64) > MAX_DB_SIZE {
-             return "ERROR: Database Full (1024MB Limit)".into();
+            return "ERROR: Database Full (1024MB Limit)".into();
         }
     }
-    
+
     if let Some(conn) = &state.conn {
         let res = conn.execute(
             "INSERT OR REPLACE INTO filesystem (path, data, size) VALUES (?1, ?2, ?3)",
@@ -207,7 +230,9 @@ fn write(filename: String, data: String) -> String {
 
 fn read_init(filename: String) -> String {
     let mut state = STATE.lock();
-    if let Err(e) = init_db(&mut state) { return format!("ERROR: {}", e); }
+    if let Err(e) = init_db(&mut state) {
+        return format!("ERROR: {}", e);
+    }
 
     let filename = filename.replace('\\', "/");
     let mut found_data: Option<Vec<u8>> = None;
@@ -218,30 +243,40 @@ fn read_init(filename: String) -> String {
             [&filename],
             |row| row.get(0),
         );
-        if let Ok(d) = res { found_data = Some(d); }
+        if let Ok(d) = res {
+            found_data = Some(d);
+        }
     }
 
     if let Some(data) = found_data {
         let size = data.len();
         let chunks = compute_chunks(&data);
         let chunk_count = chunks.len();
-        
+
         // Cache
-        if state.read_cache.len() > 100 { state.read_cache.clear(); }
-        state.read_cache.insert(filename, CachedRead { data, chunks });
-        
+        if state.read_cache.len() > 100 {
+            state.read_cache.clear();
+        }
+        state
+            .read_cache
+            .insert(filename, CachedRead { data, chunks });
+
         return format!("{}|{}", size, chunk_count);
     }
     "ERROR: Not Found".into()
 }
 
 fn read_chunk(filename: String, index: i32) -> String {
-    if index < 0 { return "ERROR: Invalid Index".into(); }
+    if index < 0 {
+        return "ERROR: Invalid Index".into();
+    }
     let mut state = STATE.lock();
-    if state.conn.is_none() { let _ = init_db(&mut state); }
+    if state.conn.is_none() {
+        let _ = init_db(&mut state);
+    }
 
     let filename = filename.replace('\\', "/");
-    
+
     if let Some(cached) = state.read_cache.get(&filename) {
         if let Some(&(start, end)) = cached.chunks.get(index as usize) {
             return String::from_utf8_lossy(&cached.data[start..end]).to_string();
@@ -252,10 +287,13 @@ fn read_chunk(filename: String, index: i32) -> String {
 
 fn delete(filename: String) -> String {
     let mut state = STATE.lock();
-    if let Err(e) = init_db(&mut state) { return format!("ERROR: {}", e); }
+    if let Err(e) = init_db(&mut state) {
+        return format!("ERROR: {}", e);
+    }
     let filename = filename.replace('\\', "/");
     if let Some(conn) = &state.conn {
-        conn.execute("DELETE FROM filesystem WHERE path = ?", [&filename]).ok();
+        conn.execute("DELETE FROM filesystem WHERE path = ?", [&filename])
+            .ok();
     }
     "OK".into()
 }
