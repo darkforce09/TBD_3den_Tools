@@ -24,3 +24,7 @@ artifact-staging/
 *.swp
 .DS_Store
 Thumbs.db
+
+# Local agent settings
+.claude/
+.codex/
