@@ -27,3 +27,10 @@ Thumbs.db
 # Local agent settings
 .claude/
 .codex/
+
+# Machine-local state (logs, investigations)
+/.workstation/
+
+# Linked worktrees; the README is tracked so the folder exists in every clone
+/.worktrees/*
+!/.worktrees/README.md
