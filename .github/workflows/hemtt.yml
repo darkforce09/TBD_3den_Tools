@@ -1,0 +1,80 @@
+name: Mod Package
+
+on:
+  push:
+    paths:
+      - "addons/**"
+      - "extension/**"
+      - ".hemtt/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - "build.bat"
+      - "mod.cpp"
+      - "README.md"
+      - "LICENSE.md"
+      - "AUTHORS.txt"
+      - ".gitattributes"
+      - ".github/workflows/hemtt.yml"
+  pull_request:
+    paths:
+      - "addons/**"
+      - "extension/**"
+      - ".hemtt/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - "build.bat"
+      - "mod.cpp"
+      - "README.md"
+      - "LICENSE.md"
+      - "AUTHORS.txt"
+      - ".gitattributes"
+      - ".github/workflows/hemtt.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: Build Complete Windows Mod
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Install HEMTT 1.19.1
+        shell: pwsh
+        run: |
+          $installDirectory = Join-Path $env:RUNNER_TEMP "hemtt-1.19.1"
+          $archivePath = Join-Path $env:RUNNER_TEMP "hemtt-windows-x64.zip"
+          Invoke-WebRequest -Uri "https://github.com/BrettMayson/HEMTT/releases/download/v1.19.1/windows-x64.zip" -OutFile $archivePath
+          Expand-Archive -Path $archivePath -DestinationPath $installDirectory
+          $executables = @(Get-ChildItem -Path $installDirectory -Filter hemtt.exe -Recurse -File)
+          if ($executables.Count -ne 1) { throw "Expected one HEMTT executable in the release archive." }
+          $executables[0].DirectoryName | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+          & $executables[0].FullName --version
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Compile extension and build mod
+        shell: cmd
+        run: call build.bat
+      - name: Verify and stage complete mod
+        shell: pwsh
+        run: |
+          $buildDirectory = Join-Path $env:GITHUB_WORKSPACE ".hemttout/build"
+          foreach ($file in @("TBD_DB_x64.dll", "mod.cpp", "README.md", "LICENSE.md", "AUTHORS.txt")) {
+            if (-not (Test-Path -LiteralPath (Join-Path $buildDirectory $file) -PathType Leaf)) {
+              throw "The mod package is missing $file."
+            }
+          }
+          $addonsDirectory = Join-Path $buildDirectory "addons"
+          $pbos = @(Get-ChildItem -Path $addonsDirectory -Filter *.pbo -File)
+          if ($pbos.Count -eq 0) { throw "The mod package contains no addon PBO." }
+          $addonDlls = @(Get-ChildItem -Path $addonsDirectory -Filter *.dll -Recurse -File)
+          if ($addonDlls.Count -ne 0) { throw "The extension DLL must be at the mod root." }
+          $packageDirectory = Join-Path $env:GITHUB_WORKSPACE "artifact-staging/@TBD_3den_Tools"
+          New-Item -ItemType Directory -Path $packageDirectory -Force | Out-Null
+          Copy-Item -Path (Join-Path $buildDirectory "*") -Destination $packageDirectory -Recurse -Force
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TBD_3den_Tools
+          path: artifact-staging/
+          if-no-files-found: error

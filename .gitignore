@@ -1,9 +1,17 @@
 # Rust build artifacts
-Source/Extension/TBD_DB/TBD_DB_Rust/target/
-Source/Extension/TBD_DB/TBD_DB_Rust/target_check/
+target/
+target_check/
+*.dll
+*.pdb
 
 # HEMTT build output
-Source/Mod/.hemttout/
+.hemttout/
+releases/
+artifact-staging/
+.hemttprivatekey
+*.biprivatekey
+*.pbo
+*.zip
 
 # SQLite databases created at runtime
 *.db

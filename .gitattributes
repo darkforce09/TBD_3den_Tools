@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.bat text eol=crlf
+*.dll binary
+*.pbo binary
+*.pdb binary
+*.zip binary

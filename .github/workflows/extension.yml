@@ -3,16 +3,20 @@ name: Extension CI
 on:
   push:
     paths:
-      - "Source/Extension/**"
+      - "extension/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
       - ".github/workflows/extension.yml"
   pull_request:
     paths:
-      - "Source/Extension/**"
+      - "extension/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
       - ".github/workflows/extension.yml"
+  workflow_dispatch:
 
-defaults:
-  run:
-    working-directory: Source/Extension/TBD_DB/TBD_DB_Rust
+permissions:
+  contents: read
 
 jobs:
   test:
@@ -23,8 +27,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy
-      - run: cargo test
-      - run: cargo clippy --all-targets -- -D warnings
+      - run: cargo test --workspace --locked
+      - run: cargo clippy --workspace --all-targets --locked -- -D warnings
 
   build-dll:
     name: Build Windows DLL
@@ -32,8 +36,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: dtolnay/rust-toolchain@stable
-      - run: cargo build --release
+      - run: cargo build --release --locked
       - uses: actions/upload-artifact@v4
         with:
           name: TBD_DB_x64
-          path: Source/Extension/TBD_DB/TBD_DB_Rust/target/release/TBD_DB_x64.dll
+          path: target/release/TBD_DB_x64.dll
+          if-no-files-found: error

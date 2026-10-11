@@ -40,48 +40,91 @@ A persistent library for saving compositions between missions.
 
 | Path | Contents |
 |------|----------|
-| `Source/Mod` | SQF addon source (config, functions, UI) |
-| `Source/Extension/TBD_DB/TBD_DB_Rust` | Rust source of the `TBD_DB_x64.dll` SQLite extension |
-| `Release/TBD_3den_Tools` | Packaged mod (PBO + DLL) ready to use |
+| `addons/TBD_3den_Tools` | SQF addon source (config, functions, UI) |
+| `extension` | Rust source of the `TBD_DB_x64.dll` SQLite extension |
+| `.hemtt` | Mod packaging configuration, hooks, and lint settings |
+| `Cargo.toml`, `Cargo.lock` | Root Cargo workspace and shared dependency lockfile |
+| `.hemttout/build` | Generated local mod package (gitignored) |
+| `target` | Generated Rust build output (gitignored) |
 
 ## Building from Source
 
-### Extension (`TBD_DB_x64.dll`)
+### Complete Windows Build
 
-Requires [Rust](https://rustup.rs/). The DLL must be built for Windows
-(build on Windows, or cross-compile with the `x86_64-pc-windows-gnu` target):
+Install [Rust](https://rustup.rs/) with the 64-bit Windows MSVC toolchain and
+Visual Studio C++ Build Tools, plus [HEMTT](https://hemtt.dev/) on `PATH`.
+CI uses HEMTT **1.19.1**. From the repository root, run:
 
+```bat
+build.bat
 ```
-cd Source/Extension/TBD_DB/TBD_DB_Rust
-cargo test
-cargo build --release
+
+The script also works when launched from another directory. It builds the
+extension with `cargo build --release --locked`, stages
+`target/release/TBD_DB_x64.dll` at the repository root, and runs `hemtt build`.
+Any failure stops the build and returns a nonzero exit code.
+
+The complete local mod is written directly to **`.hemttout/build/`**:
+
+```text
+.hemttout/build/
+├── addons/
+│   └── TBD_3den_Tools_TBD_3den_Tools.pbo
+├── TBD_DB_x64.dll
+├── mod.cpp
+├── README.md
+├── LICENSE.md
+└── AUTHORS.txt
 ```
 
-Copy the resulting `TBD_DB_x64.dll` to both shipped locations:
+HEMTT rapifies `config.cpp`, binarizes the stringtable, and compiles SQF to
+`.sqfc`. The DLL belongs alongside `mod.cpp` at the mod root; it is excluded
+from PBOs. Direct `hemtt build` requires an already-built Windows DLL staged
+at the repository root. The post-build hook rejects packages missing it.
 
-*   `Source/Mod/addons/TBD_3den_Tools/TBD_DB_x64.dll`
-*   `Release/TBD_3den_Tools/TBD_DB_x64.dll`
+### Linux Cross-Compilation
 
-### Mod (PBO)
+Install Rust, HEMTT, and a MinGW-w64 compiler providing
+`x86_64-w64-mingw32-gcc` and `x86_64-w64-mingw32-ar` on `PATH`. The bundled
+SQLite dependency also needs this C toolchain. From the repository root:
 
-The mod is built with [HEMTT](https://hemtt.dev/) (project config in
-`Source/Mod/.hemtt/project.toml`):
-
-```
-cd Source/Mod
+```sh
+rustup target add x86_64-pc-windows-gnu
+CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER=x86_64-w64-mingw32-gcc \
+CC_x86_64_pc_windows_gnu=x86_64-w64-mingw32-gcc \
+AR_x86_64_pc_windows_gnu=x86_64-w64-mingw32-ar \
+cargo build --release --locked --target x86_64-pc-windows-gnu
+cp target/x86_64-pc-windows-gnu/release/TBD_DB_x64.dll TBD_DB_x64.dll
 hemtt build
 ```
 
-Copy the result to the release folder:
+A native Linux Cargo build produces a shared library rather than the Windows
+DLL required by this package.
 
-```
-cp .hemttout/build/addons/TBD_3den_Tools_TBD_3den_Tools.pbo \
-   ../../Release/TBD_3den_Tools/addons/TBD_3den_Tools.pbo
+### Checks and CI
+
+Run the checks from the repository root:
+
+```sh
+cargo test --locked
+cargo clippy --locked --all-targets -- -D warnings
+hemtt check
 ```
 
-HEMTT binarizes `config.cpp` and the stringtable, compiles all SQF to
-`.sqfc`, and excludes the DLL from the PBO (it is loaded from the mod root,
-not from inside the PBO).
+Extension CI tests and lints the Rust workspace and uploads the Windows DLL.
+The packaging workflow builds the complete mod on Windows and uploads a
+downloadable `TBD_3den_Tools` artifact containing an `@TBD_3den_Tools` folder.
+It runs for relevant pushes and pull requests and can be started manually.
+It does not publish a GitHub Release. Generated packages and binaries are
+gitignored.
+
+## Installation
+
+Download and extract the packaging workflow artifact, or copy the contents of
+`.hemttout/build/` into a local `@TBD_3den_Tools` folder. Add that folder to the
+Arma 3 launcher as a local mod and enable it. Keep `TBD_DB_x64.dll` at the mod
+root alongside `mod.cpp` and the `addons` directory. If Windows blocks the DLL,
+right-click it, open **Properties**, and select **Unblock** if available.
 
 ## Credits
 

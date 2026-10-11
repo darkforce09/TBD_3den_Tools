@@ -9,4 +9,5 @@ minor = 0
 patch = 0
 
 [files]
+include = ["*.dll", "mod.cpp", "README.md", "LICENSE.md", "AUTHORS.txt"]
 exclude = ["*.dll"]
