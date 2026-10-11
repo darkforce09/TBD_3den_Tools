@@ -42,7 +42,7 @@ A persistent library for saving compositions between missions.
 |------|----------|
 | `addons/TBD_3den_Tools` | SQF addon source (config, functions, UI) |
 | `extension` | Rust source of the `TBD_DB_x64.dll` SQLite extension |
-| `.hemtt` | Mod packaging configuration, hooks, and lint settings |
+| `.hemtt` | Mod packaging configuration and hooks |
 | `Cargo.toml`, `Cargo.lock` | Root Cargo workspace and shared dependency lockfile |
 | `.hemttout/build` | Generated local mod package (gitignored) |
 | `target` | Generated Rust build output (gitignored) |
@@ -111,16 +111,15 @@ cargo clippy --locked --all-targets -- -D warnings
 hemtt check
 ```
 
-Extension CI tests and lints the Rust workspace and uploads the Windows DLL.
-The packaging workflow builds the complete mod on Windows and uploads a
-downloadable `TBD_3den_Tools` artifact containing an `@TBD_3den_Tools` folder.
-It runs for relevant pushes and pull requests and can be started manually.
-It does not publish a GitHub Release. Generated packages and binaries are
-gitignored.
+The CI workflow (`.github/workflows/ci.yml`) runs on every push and pull
+request and can be started manually. It tests and lints the Rust workspace on
+Linux, then builds the complete mod on Windows and uploads a downloadable
+`TBD_3den_Tools` artifact containing an `@TBD_3den_Tools` folder. It does not
+publish a GitHub Release. Generated packages and binaries are gitignored.
 
 ## Installation
 
-Download and extract the packaging workflow artifact, or copy the contents of
+Download and extract the CI workflow's `TBD_3den_Tools` artifact, or copy the contents of
 `.hemttout/build/` into a local `@TBD_3den_Tools` folder. Add that folder to the
 Arma 3 launcher as a local mod and enable it. Keep `TBD_DB_x64.dll` at the mod
 root alongside `mod.cpp` and the `addons` directory. If Windows blocks the DLL,

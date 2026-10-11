@@ -1,6 +1,5 @@
 # Rust build artifacts
 target/
-target_check/
 *.dll
 *.pdb
 

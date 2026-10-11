@@ -153,25 +153,6 @@
             <Swedish>CSO: Skapade logik '%1'.</Swedish>
             <Ukrainian>Успіх CSO: Створено логіку '%1'.</Ukrainian>
         </Key>
-        <Key ID="STR_CSO_CopiedToClipboard">
-            <Original>CSO: Copied %1 objects (%2).</Original>
-            <German>CSO: %1 Objekte kopiert (%2).</German>
-            <French>CSO: %1 objets copiés (%2).</French>
-            <Spanish>CSO: Copiados %1 objetos (%2).</Spanish>
-            <Italian>CSO: Copiati %1 oggetti (%2).</Italian>
-            <Polish>CSO: Skopiowano %1 obiektów (%2).</Polish>
-            <Russian>CSO: Скопировано %1 объектов (%2).</Russian>
-            <Czech>CSO: Zkopírováno %1 objektů (%2).</Czech>
-            <Portuguese>CSO: Copiados %1 objetos (%2).</Portuguese>
-            <Turkish>CSO: %1 nesne kopyalandı (%2).</Turkish>
-            <Chinese>CSO: 已复制 %1 个对象 (%2)。</Chinese>
-            <ChineseTraditional>CSO: 已復制 %1 個對象 (%2)。</ChineseTraditional>
-            <Japanese>CSO: %1 個のオブジェクトをコピーしました (%2)。</Japanese>
-            <Korean>CSO: %1 개의 개체가 복사되었습니다 (%2).</Korean>
-            <Dutch>CSO: %1 objecten gekopieerd (%2).</Dutch>
-            <Swedish>CSO: Kopierade %1 objekt (%2).</Swedish>
-            <Ukrainian>CSO: Скопійовано %1 об'єктів (%2).</Ukrainian>
-        </Key>
         <Key ID="STR_CSO_Warn_CreateClass">
             <Original>CSO Warning: Could not create class '%1'.</Original>
             <German>CSO Warnung: Konnte Klasse '%1' nicht erstellen.</German>
@@ -247,25 +228,6 @@
             <Dutch>CSO FOUT: Geen geldige objecten of compatibele logica geselecteerd.</Dutch>
             <Swedish>CSO FEL: Inga giltiga objekt eller kompatibel logik vald.</Swedish>
             <Ukrainian>ПОМИЛКА CSO: Не вибрано дійсних об'єктів або сумісної логіки.</Ukrainian>
-        </Key>
-        <Key ID="STR_CSO_GroupSaved">
-            <Original>CSO: Group '%1' saved.</Original>
-            <German>CSO: Gruppe '%1' gespeichert.</German>
-            <French>CSO: Groupe '%1' enregistré.</French>
-            <Spanish>CSO: Grupo '%1' guardado.</Spanish>
-            <Italian>CSO: Gruppo '%1' salvato.</Italian>
-            <Polish>CSO: Grupa '%1' zapisana.</Polish>
-            <Russian>CSO: Группа '%1' сохранена.</Russian>
-            <Czech>CSO: Skupina '%1' uložena.</Czech>
-            <Portuguese>CSO: Grupo '%1' salvo.</Portuguese>
-            <Turkish>CSO: Grup '%1' kaydedildi.</Turkish>
-            <Chinese>CSO: 组 '%1' 已保存。</Chinese>
-            <ChineseTraditional>CSO: 組 '%1' 已保存。</ChineseTraditional>
-            <Japanese>CSO: グループ '%1' を保存しました。</Japanese>
-            <Korean>CSO: 그룹 '%1'이 저장되었습니다.</Korean>
-            <Dutch>CSO: Groep '%1' opgeslagen.</Dutch>
-            <Swedish>CSO: Gruppen '%1' sparad.</Swedish>
-            <Ukrainian>CSO: Група '%1' збережена.</Ukrainian>
         </Key>
         <Key ID="STR_CSO_NoItemSel">
             <Original>CSO: No item selected.</Original>
@@ -362,25 +324,6 @@
             <Swedish>CSO: Komposition '%1' importerad.</Swedish>
             <Ukrainian>CSO: Композиція '%1' імпортована.</Ukrainian>
         </Key>
-        <Key ID="STR_CSO_Err_FolderDelete">
-            <Original>CSO: Cannot delete a folder. Delete items inside first.</Original>
-            <German>CSO: Ordner kann nicht gelöscht werden. Zuerst Inhalt löschen.</German>
-            <French>CSO: Impossible de supprimer un dossier. Supprimez d'abord les éléments à l'intérieur.</French>
-            <Spanish>CSO: No se puede eliminar una carpeta. Elimine primero los elementos del interior.</Spanish>
-            <Italian>CSO: Impossibile eliminare una cartella. Elimina prima gli elementi al suo interno.</Italian>
-            <Polish>CSO: Nie można usunąć folderu. Najpierw usuń elementy wewnątrz.</Polish>
-            <Russian>CSO: Невозможно удалить папку. Сначала удалите элементы внутри.</Russian>
-            <Czech>CSO: Nelze smazat složku. Nejprve smažte položky uvnitř.</Czech>
-            <Portuguese>CSO: Não é possível excluir uma pasta. Exclua os itens dentro primeiro.</Portuguese>
-            <Turkish>CSO: Klasör silinemez. Önce içindeki öğeleri silin.</Turkish>
-            <Chinese>CSO: 无法删除文件夹。请先删除其中的项目。</Chinese>
-            <ChineseTraditional>CSO: 無法刪除文件夾。請先刪除其中的項目。</ChineseTraditional>
-            <Japanese>CSO: フォルダを削除できません。最初に中のアイテムを削除してください。</Japanese>
-            <Korean>CSO: 폴더를 삭제할 수 없습니다. 먼저 내부 항목을 삭제하십시오.</Korean>
-            <Dutch>CSO: Kan map niet verwijderen. Verwijder eerst items erin.</Dutch>
-            <Swedish>CSO: Kan inte ta bort mapp. Ta bort innehåll först.</Swedish>
-            <Ukrainian>CSO: Неможливо видалити папку. Спочатку видаліть елементи всередині.</Ukrainian>
-        </Key>
         <Key ID="STR_CSO_ItemDeleted">
             <Original>CSO: Item Deleted.</Original>
             <German>CSO: Element gelöscht.</German>
@@ -399,82 +342,6 @@
             <Dutch>CSO: Item verwijderd.</Dutch>
             <Swedish>CSO: Objekt raderat.</Swedish>
             <Ukrainian>CSO: Елемент видалено.</Ukrainian>
-        </Key>
-        <Key ID="STR_CSO_Err_FolderEmpty">
-            <Original>CSO: Enter a folder name first (e.g. MyFolder).</Original>
-            <German>CSO: Bitte zuerst Ordnernamen eingeben (z.B. MeinOrdner).</German>
-            <French>CSO: Entrez d'abord un nom de dossier (ex. MonDossier).</French>
-            <Spanish>CSO: Ingrese primero un nombre de carpeta (ej. MiCarpeta).</Spanish>
-            <Italian>CSO: Inserisci prima un nome per la cartella (es. MiaCartella).</Italian>
-            <Polish>CSO: Najpierw wprowadź nazwę folderu (np. MojFolder).</Polish>
-            <Russian>CSO: Сначала введите имя папки (например, MyFolder).</Russian>
-            <Czech>CSO: Nejprve zadejte název složky (např. MojeSlozka).</Czech>
-            <Portuguese>CSO: Digite o nome da pasta primeiro (ex. MinhaPasta).</Portuguese>
-            <Turkish>CSO: Önce bir klasör adı girin (örn. Klasorum).</Turkish>
-            <Chinese>CSO: 请先输入文件夹名称 (例如: MyFolder)。</Chinese>
-            <ChineseTraditional>CSO: 請先輸入文件夾名稱 (例如: MyFolder)。</ChineseTraditional>
-            <Japanese>CSO: 最初にフォルダ名を入力してください (例: MyFolder)。</Japanese>
-            <Korean>CSO: 먼저 폴더 이름을 입력하십시오 (예: MyFolder).</Korean>
-            <Dutch>CSO: Voer eerst een mapnaam in (bijv. MijnMap).</Dutch>
-            <Swedish>CSO: Ange mappnamn först.</Swedish>
-            <Ukrainian>CSO: Спочатку введіть ім'я папки.</Ukrainian>
-        </Key>
-        <Key ID="STR_CSO_FolderCreated">
-            <Original>CSO: Folder '%1' created.</Original>
-            <German>CSO: Ordner '%1' erstellt.</German>
-            <French>CSO: Dossier '%1' créé.</French>
-            <Spanish>CSO: Carpeta '%1' creada.</Spanish>
-            <Italian>CSO: Cartella '%1' creata.</Italian>
-            <Polish>CSO: Utworzono folder '%1'.</Polish>
-            <Russian>CSO: Папка '%1' создана.</Russian>
-            <Czech>CSO: Složka '%1' vytvořena.</Czech>
-            <Portuguese>CSO: Pasta '%1' criada.</Portuguese>
-            <Turkish>CSO: Klasör '%1' oluşturuldu.</Turkish>
-            <Chinese>CSO: 文件夹 '%1' 已创建。</Chinese>
-            <ChineseTraditional>CSO: 文件夾 '%1' 已創建。</ChineseTraditional>
-            <Japanese>CSO: フォルダ '%1' を作成しました。</Japanese>
-            <Korean>CSO: 폴더 '%1'이 생성되었습니다.</Korean>
-            <Dutch>CSO: Map '%1' gemaakt.</Dutch>
-            <Swedish>CSO: Mapp '%1' skapad.</Swedish>
-            <Ukrainian>CSO: Папку '%1' створено.</Ukrainian>
-        </Key>
-        <Key ID="STR_CSO_Prompt_Name">
-            <Original>CSO: Please enter a name!</Original>
-            <German>CSO: Bitte geben Sie einen Namen ein!</German>
-            <French>CSO: Veuillez entrer un nom !</French>
-            <Spanish>CSO: ¡Por favor ingrese un nombre!</Spanish>
-            <Italian>CSO: Inserisci un nome!</Italian>
-            <Polish>CSO: Proszę wprowadzić nazwę!</Polish>
-            <Russian>CSO: Пожалуйста, введите имя!</Russian>
-            <Czech>CSO: Zadejte prosím název!</Czech>
-            <Portuguese>CSO: Por favor, insira um nome!</Portuguese>
-            <Turkish>CSO: Lütfen bir isim girin!</Turkish>
-            <Chinese>CSO: 请输入名称！</Chinese>
-            <ChineseTraditional>CSO: 請輸入名稱！</ChineseTraditional>
-            <Japanese>CSO: 名前を入力してください！</Japanese>
-            <Korean>CSO: 이름을 입력해 주세요!</Korean>
-            <Dutch>CSO: Voer een naam in!</Dutch>
-            <Swedish>CSO: Vänligen ange ett namn!</Swedish>
-            <Ukrainian>CSO: Будь ласка, введіть ім'я!</Ukrainian>
-        </Key>
-        <Key ID="STR_CSO_Err_UtilsFail">
-            <Original>CSO ERROR: Utilities failed to load.</Original>
-            <German>CSO FEHLER: Utilities konnten nicht geladen werden.</German>
-            <French>ERREUR CSO: Échec du chargement des utilitaires.</French>
-            <Spanish>ERROR CSO: No se pudieron cargar las utilidades.</Spanish>
-            <Italian>ERRORE CSO: Impossibile caricare le utilità.</Italian>
-            <Polish>BŁĄD CSO: Narzędzia nie zostały załadowane.</Polish>
-            <Russian>ОШИБКА CSO: Не удалось загрузить утилиты.</Russian>
-            <Czech>CHYBA CSO: Nástroje se nepodařilo načíst.</Czech>
-            <Portuguese>ERRO CSO: Falha ao carregar utilitários.</Portuguese>
-            <Turkish>CSO HATASI: Araçlar yüklenemedi.</Turkish>
-            <Chinese>CSO 错误：工具加载失败。</Chinese>
-            <ChineseTraditional>CSO 錯誤：工具加載失敗。</ChineseTraditional>
-            <Japanese>CSO エラー: ユーティリティの読み込みに失敗しました。</Japanese>
-            <Korean>CSO 오류: 유틸리티를 로드하지 못했습니다.</Korean>
-            <Dutch>CSO FOUT: Hulpprogramma's konden niet worden geladen.</Dutch>
-            <Swedish>CSO FEL: Verktyg kunde inte laddas.</Swedish>
-            <Ukrainian>ПОМИЛКА CSO: Утиліти не вдалося завантажити.</Ukrainian>
         </Key>
         <Key ID="STR_CSO_Err_InvalidRestoration">
             <Original>CSO ERROR: Invalid data for restoration.</Original>
@@ -497,25 +364,6 @@
         </Key>
     </Package>
     <Package name="UI">
-        <Key ID="STR_CSO_SearchPlaceHolder">
-            <Original>Search...</Original>
-            <German>Suchen...</German>
-            <French>Rechercher...</French>
-            <Spanish>Buscar...</Spanish>
-            <Italian>Cerca...</Italian>
-            <Polish>Szukaj...</Polish>
-            <Russian>Поиск...</Russian>
-            <Czech>Hledat...</Czech>
-            <Portuguese>Pesquisar...</Portuguese>
-            <Turkish>Ara...</Turkish>
-            <Chinese>搜索...</Chinese>
-            <ChineseTraditional>搜索...</ChineseTraditional>
-            <Japanese>検索...</Japanese>
-            <Korean>검색...</Korean>
-            <Dutch>Zoeken...</Dutch>
-            <Swedish>Sök...</Swedish>
-            <Ukrainian>Пошук...</Ukrainian>
-        </Key>
         <Key ID="STR_CSO_Help_Title">
             <Original>CSO Help &amp; Guide</Original>
             <German>CSO Hilfe &amp; Anleitung</German>

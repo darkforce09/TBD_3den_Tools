@@ -1,42 +1,27 @@
-name: Mod Package
+name: CI
 
 on:
   push:
-    paths:
-      - "addons/**"
-      - "extension/**"
-      - ".hemtt/**"
-      - "Cargo.toml"
-      - "Cargo.lock"
-      - "build.bat"
-      - "mod.cpp"
-      - "README.md"
-      - "LICENSE.md"
-      - "AUTHORS.txt"
-      - ".gitattributes"
-      - ".github/workflows/hemtt.yml"
   pull_request:
-    paths:
-      - "addons/**"
-      - "extension/**"
-      - ".hemtt/**"
-      - "Cargo.toml"
-      - "Cargo.lock"
-      - "build.bat"
-      - "mod.cpp"
-      - "README.md"
-      - "LICENSE.md"
-      - "AUTHORS.txt"
-      - ".gitattributes"
-      - ".github/workflows/hemtt.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
+  test:
+    name: Rust checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy
+      - run: cargo test --workspace --locked
+      - run: cargo clippy --workspace --all-targets --locked -- -D warnings
+
   package:
-    name: Build Complete Windows Mod
+    name: Complete Windows mod
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
