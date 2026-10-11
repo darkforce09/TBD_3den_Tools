@@ -37,8 +37,8 @@ jobs:
           $executables = @(Get-ChildItem -Path $installDirectory -Filter hemtt.exe -Recurse -File)
           if ($executables.Count -ne 1) { throw "Expected one HEMTT executable in the release archive." }
           $executables[0].DirectoryName | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          # `hemtt --version` prints the version but exits 1, so check the printed version instead.
-          $version = & $executables[0].FullName --version
+          # `hemtt --version` prints the version to stderr and exits 1, so check the printed text.
+          $version = (& $executables[0].FullName --version 2>&1 | Out-String)
           if ("$version" -notmatch '1\.19\.1') { throw "Unexpected HEMTT version: $version" }
           exit 0
       - name: Compile extension and build mod
