@@ -36,18 +36,12 @@ A persistent library for saving compositions between missions.
 2.  **Save**: Select objects, enter a name, and save.
 3.  **Load**: Select an item and load it.
 
-## Repository Layout
-
-| Path | Contents |
-|------|----------|
-| `addons/TBD_3den_Tools` | SQF addon source (config, functions, UI) |
-| `extension` | Rust source of the `TBD_DB_x64.dll` SQLite extension |
-| `.hemtt` | Mod packaging configuration and hooks |
-| `Cargo.toml`, `Cargo.lock` | Root Cargo workspace and shared dependency lockfile |
-| `.hemttout/build` | Generated local mod package (gitignored) |
-| `target` | Generated Rust build output (gitignored) |
-
 ## Building from Source
+
+The SQF addon lives in `addons/TBD_3den_Tools`, the Rust source of the
+`TBD_DB_x64.dll` SQLite extension in `extension/`, and the HEMTT packaging
+configuration in `.hemtt/`. The Rust version is pinned in
+`rust-toolchain.toml`; rustup installs it on the first Cargo command.
 
 ### Complete Windows Build
 
@@ -64,18 +58,9 @@ extension with `cargo build --release --locked`, stages
 `target/release/TBD_DB_x64.dll` at the repository root, and runs `hemtt build`.
 Any failure stops the build and returns a nonzero exit code.
 
-The complete local mod is written directly to **`.hemttout/build/`**:
-
-```text
-.hemttout/build/
-├── addons/
-│   └── TBD_3den_Tools_TBD_3den_Tools.pbo
-├── TBD_DB_x64.dll
-├── mod.cpp
-├── README.md
-├── LICENSE.md
-└── AUTHORS.txt
-```
+The complete local mod is written to **`.hemttout/build/`**: the addon PBO in
+`addons/`, with `TBD_DB_x64.dll`, `mod.cpp`, `README.md`, `LICENSE.md` and
+`AUTHORS.txt` at the mod root.
 
 HEMTT rapifies `config.cpp`, binarizes the stringtable, and compiles SQF to
 `.sqfc`. The DLL belongs alongside `mod.cpp` at the mod root; it is excluded
@@ -89,7 +74,6 @@ Install Rust, HEMTT, and a MinGW-w64 compiler providing
 SQLite dependency also needs this C toolchain. From the repository root:
 
 ```sh
-rustup target add x86_64-pc-windows-gnu
 CARGO_TARGET_X86_64_PC_WINDOWS_GNU_LINKER=x86_64-w64-mingw32-gcc \
 CC_x86_64_pc_windows_gnu=x86_64-w64-mingw32-gcc \
 AR_x86_64_pc_windows_gnu=x86_64-w64-mingw32-ar \
@@ -106,8 +90,9 @@ DLL required by this package.
 Run the checks from the repository root:
 
 ```sh
-cargo test --locked
-cargo clippy --locked --all-targets -- -D warnings
+cargo fmt --all --check
+cargo test --workspace --locked
+cargo clippy --workspace --all-targets --locked -- -D warnings
 hemtt check
 ```
 
